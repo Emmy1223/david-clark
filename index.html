@@ -9,21 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #050505;
-    --bg-alt: #080808;
-    --surface: #0D0D0D;
-    --surface-glass: rgba(13, 13, 13, 0.7);
+    --bg: #050510;
+    --bg-alt: #08081A;
+    --surface: #0D0D20;
+    --surface-glass: rgba(13, 13, 32, 0.7);
     --ink: #E8E8E8;
     --ink-secondary: #B0B0B0;
-    --muted: #707070;
-    --border: #1A1A1A;
-    --border-glass: rgba(0, 255, 65, 0.15);
+    --muted: #707080;
+    --border: #1A1A2E;
+    --border-glass: rgba(0, 255, 65, 0.12);
     --accent: #00FF41;
     --accent-dim: #00FF4118;
-    --accent-glow: rgba(0, 255, 65, 0.3);
+    --accent-glow: rgba(0, 255, 65, 0.25);
     --accent-dark: #00CC34;
-    --glass-bg: rgba(13, 13, 13, 0.65);
-    --glass-border: rgba(0, 255, 65, 0.2);
+    --glass-bg: rgba(13, 13, 32, 0.65);
+    --glass-border: rgba(0, 255, 65, 0.18);
     --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     --glass-blur: blur(12px);
     --radius-sm: 4px;
@@ -50,7 +50,7 @@
     overflow-x: hidden;
   }
 
-  #matrix-layer {
+  #circuit-layer {
     position: fixed;
     top: 0;
     left: 0;
@@ -58,7 +58,7 @@
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.55;
+    opacity: 0.35;
   }
 
   a { color: inherit; text-decoration: none; }
@@ -87,8 +87,8 @@
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 0, 0, 0.04) 2px,
-      rgba(0, 0, 0, 0.04) 4px
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
     );
     pointer-events: none;
     z-index: 998;
@@ -173,7 +173,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ---------- Hero ---------- */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -237,10 +236,6 @@
     display: inline-block;
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
   }
-  @keyframes fadeUpScale {
-    from { opacity: 0; transform: translateY(40px) scale(0.94); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -294,9 +289,7 @@
     background: rgba(0, 255, 65, 0.06);
     border-color: rgba(0, 255, 65, 0.2);
   }
-  .hero-meta-item a:hover {
-    text-shadow: 0 0 10px var(--accent-glow);
-  }
+  .hero-meta-item a:hover { text-shadow: 0 0 10px var(--accent-glow); }
   .hero-meta-divider {
     color: var(--border-glass);
     user-select: none;
@@ -304,7 +297,6 @@
     font-size: 10px;
   }
 
-  /* ---------- Sections ---------- */
   .section { padding: 80px 0; position: relative; }
   .section-alt {
     background: var(--bg-alt);
@@ -340,7 +332,6 @@
     text-transform: uppercase;
   }
 
-  /* ---------- Profile ---------- */
   .profile-text {
     font-size: 17px;
     line-height: 1.8;
@@ -404,7 +395,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* ---------- Experience ---------- */
   .timeline {
     position: relative;
     max-width: 760px;
@@ -431,7 +421,6 @@
   .timeline-item:last-child { margin-bottom: 0; }
   .timeline-item:nth-child(odd) { flex-direction: row; }
   .timeline-item:nth-child(even) { flex-direction: row-reverse; }
-
   .timeline-dot {
     position: absolute;
     left: 50%;
@@ -458,7 +447,6 @@
     color: #000;
     box-shadow: 0 0 24px var(--accent), 0 0 48px var(--accent-glow);
   }
-
   .experience-card {
     width: calc(50% - 44px);
     background: var(--glass-bg);
@@ -539,7 +527,6 @@
     text-shadow: 0 0 8px var(--accent-glow);
   }
 
-  /* ---------- Projects ---------- */
   .projects-grid {
     display: grid;
     gap: 24px;
@@ -621,7 +608,6 @@
     box-shadow: 0 0 12px var(--accent-glow);
   }
 
-  /* ---------- Skills ---------- */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -653,11 +639,7 @@
     margin-bottom: 14px;
     text-shadow: 0 0 10px var(--accent-glow);
   }
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-tag {
     font-size: 11px;
     padding: 5px 12px;
@@ -677,7 +659,6 @@
     box-shadow: 0 0 12px var(--accent-glow);
   }
 
-  /* ---------- Education ---------- */
   .education-cards {
     display: grid;
     gap: 16px;
@@ -710,11 +691,7 @@
     font-family: var(--heading);
     letter-spacing: 0.02em;
   }
-  .education-info .school {
-    font-size: 14px;
-    color: var(--muted);
-    font-weight: 300;
-  }
+  .education-info .school { font-size: 14px; color: var(--muted); font-weight: 300; }
   .education-date {
     font-family: var(--tech);
     font-size: 11px;
@@ -727,7 +704,50 @@
     border: 1px solid rgba(0, 255, 65, 0.15);
   }
 
-  /* ---------- Contact ---------- */
+  /* Open Source */
+  .oss-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .oss-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    transition: all var(--transition);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  .oss-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 16px var(--accent-glow);
+  }
+  .oss-card h3 {
+    font-family: var(--heading);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .oss-card p {
+    font-size: 13px;
+    color: var(--ink-secondary);
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .oss-card .metric {
+    font-family: var(--tech);
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent-glow);
+  }
+  .oss-card .project-tech { justify-content: center; }
+
   .contact-section {
     text-align: center;
     padding: 80px 0;
@@ -790,7 +810,6 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 28px var(--accent-glow);
   }
 
-  /* ---------- Footer ---------- */
   .footer {
     border-top: 1px solid var(--border);
     padding: 28px 0;
@@ -806,7 +825,6 @@
     gap: 12px;
   }
 
-  /* ---------- Scroll indicator ---------- */
   .scroll-indicator {
     position: absolute;
     bottom: 40px;
@@ -860,6 +878,8 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
+
+  /* Daily Drivers */
   .tools-scroll {
     display: flex;
     flex-wrap: wrap;
@@ -884,40 +904,8 @@
     color: var(--accent);
     box-shadow: 0 0 12px var(--accent-glow);
   }
-  @media (max-width: 768px) {
-    .navbar {
-      top: 8px;
-      left: 8px;
-      right: 8px;
-      transform: none;
-      border-radius: 30px;
-    }
-    .navbar .container { gap: 2px; }
-    .navbar-brand { font-size: 11px; padding: 6px 10px; }
-    .navbar-nav a { font-size: 10px; padding: 6px 10px; }
-    .container { padding: 0 20px; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .hero-meta { flex-wrap: wrap; }
-    .education-card { flex-direction: column; align-items: flex-start; text-align: left; }
-    .contact-buttons { flex-direction: column; align-items: stretch; }
-    .btn { justify-content: center; }
-    .footer .container { flex-direction: column; text-align: center; }
-    .timeline { padding: 0; }
-    .timeline::before { left: 20px; }
-    .timeline-item { flex-direction: column !important; padding-left: 52px; }
-    .timeline-dot { left: 20px; }
-    .experience-card { width: 100%; }
-    .hero h1 { font-size: 36px; }
-  }
 
-  @media (max-width: 480px) {
-    .navbar-nav a:nth-child(4) { display: none; }
-    .hero h1 { font-size: 28px; }
-    .section-title { font-size: 24px; }
-    .navbar-brand { border-right: none; margin-right: 0; }
-  }
-    /* ---------- AI Chatbot ---------- */
+  /* ---------- AI Chatbot ---------- */
   .ai-chat-wrapper {
     position: fixed;
     bottom: 24px;
@@ -971,12 +959,12 @@
     right: 0;
     width: 380px;
     max-height: 520px;
-    background: var(--glass-bg);
+    background: rgba(10, 10, 30, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 30px var(--accent-glow);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -1031,10 +1019,7 @@
     transition: all var(--transition);
     font-family: var(--tech);
   }
-  .ai-chat-close:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .ai-chat-close:hover { border-color: var(--accent); color: var(--accent); }
   .ai-chat-messages {
     flex: 1;
     padding: 16px 20px;
@@ -1046,16 +1031,9 @@
     font-size: 13px;
     line-height: 1.55;
   }
-  .ai-chat-messages::-webkit-scrollbar {
-    width: 4px;
-  }
-  .ai-chat-messages::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .ai-chat-messages::-webkit-scrollbar-thumb {
-    background: var(--border-glass);
-    border-radius: 2px;
-  }
+  .ai-chat-messages::-webkit-scrollbar { width: 4px; }
+  .ai-chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .ai-chat-messages::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 2px; }
   .ai-message {
     padding: 10px 14px;
     border-radius: var(--radius);
@@ -1080,15 +1058,6 @@
     border-radius: var(--radius) var(--radius) 4px var(--radius);
     font-weight: 500;
   }
-  .ai-message .metric-inline {
-    font-family: var(--tech);
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .ai-message.user .metric-inline {
-    color: #000;
-    text-shadow: none;
-  }
   .ai-chat-input-area {
     padding: 12px 16px;
     border-top: 1px solid var(--glass-border);
@@ -1097,7 +1066,7 @@
   }
   .ai-chat-input {
     flex: 1;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 10px 16px;
@@ -1107,13 +1076,8 @@
     outline: none;
     transition: all var(--transition);
   }
-  .ai-chat-input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 12px var(--accent-glow);
-  }
-  .ai-chat-input::placeholder {
-    color: var(--muted);
-  }
+  .ai-chat-input:focus { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+  .ai-chat-input::placeholder { color: var(--muted); }
   .ai-chat-send {
     background: var(--accent);
     border: none;
@@ -1128,10 +1092,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .ai-chat-send:hover {
-    background: var(--accent-dark);
-    box-shadow: 0 0 16px var(--accent-glow);
-  }
+  .ai-chat-send:hover { background: var(--accent-dark); box-shadow: 0 0 16px var(--accent-glow); }
   .ai-typing-indicator {
     display: flex;
     gap: 4px;
@@ -1152,19 +1113,49 @@
     30% { transform: translateY(-6px); opacity: 1; }
   }
 
+  @media (max-width: 768px) {
+    .navbar {
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      transform: none;
+      border-radius: 30px;
+    }
+    .navbar .container { gap: 2px; }
+    .navbar-brand { font-size: 11px; padding: 6px 10px; }
+    .navbar-nav a { font-size: 10px; padding: 6px 10px; }
+    .container { padding: 0 20px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .oss-grid { grid-template-columns: 1fr; }
+    .hero-meta { flex-wrap: wrap; }
+    .education-card { flex-direction: column; align-items: flex-start; text-align: left; }
+    .contact-buttons { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+    .footer .container { flex-direction: column; text-align: center; }
+    .timeline { padding: 0; }
+    .timeline::before { left: 20px; }
+    .timeline-item { flex-direction: column !important; padding-left: 52px; }
+    .timeline-dot { left: 20px; }
+    .experience-card { width: 100%; }
+    .hero h1 { font-size: 36px; }
+  }
+
   @media (max-width: 480px) {
-    .ai-chat-panel {
-      width: calc(100vw - 40px);
-      right: -8px;
-      bottom: 68px;
-    }
-    .ai-chat-wrapper {
-      bottom: 16px;
-      right: 16px;
-    }
+    .navbar-nav a:nth-child(4) { display: none; }
+    .hero h1 { font-size: 28px; }
+    .section-title { font-size: 24px; }
+    .navbar-brand { border-right: none; margin-right: 0; }
+    .ai-chat-panel { width: calc(100vw - 40px); right: -8px; bottom: 68px; }
+    .ai-chat-wrapper { bottom: 16px; right: 16px; }
   }
 </style>
-</head>,
+</head>
+<body>
+
+  <canvas id="circuit-layer"></canvas>
+  <div class="scanlines"></div>
+
   <!-- AI Chatbot -->
   <div class="ai-chat-wrapper">
     <button class="ai-chat-btn" id="aiChatBtn" aria-label="Ask AI">
@@ -1187,10 +1178,6 @@
       </div>
     </div>
   </div>
-<body>
-
-  <canvas id="matrix-layer"></canvas>
-  <div class="scanlines"></div>
 
   <nav class="navbar">
     <div class="container">
@@ -1448,10 +1435,11 @@
       </div>
     </div>
   </section>
+
   <section id="opensource" class="section">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">[ 09 ] Open Source</div>
+        <div class="section-tag">[ 06 ] Open Source</div>
         <h2 class="section-title">Open Source</h2>
       </div>
       <div class="oss-grid">
@@ -1479,10 +1467,11 @@
       </div>
     </div>
   </section>
-    <section id="toolbar" class="section">
+
+  <section id="toolbar" class="section section-alt">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">[ 11 ] Daily Drivers</div>
+        <div class="section-tag">[ 07 ] Daily Drivers</div>
         <h2 class="section-title">Tools & Environment</h2>
       </div>
       <div class="tools-scroll">
@@ -1522,7 +1511,108 @@
   </footer>
 
   <script>
-        // AI Chatbot
+    // Circuit Board Background
+    const canvas = document.getElementById('circuit-layer');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      generateNodes();
+    });
+    
+    let nodes = [];
+    let connections = [];
+    
+    function generateNodes() {
+      nodes = [];
+      connections = [];
+      const count = Math.floor((canvas.width * canvas.height) / 18000);
+      
+      for (let i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          size: 1.5 + Math.random() * 2.5,
+          pulse: Math.random() * Math.PI * 2
+        });
+      }
+      
+      // Create connections between nearby nodes
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160) {
+            connections.push({ from: i, to: j, opacity: Math.max(0, 1 - dist / 160) });
+          }
+        }
+      }
+    }
+    
+    generateNodes();
+    
+    function drawCircuit() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Update node positions
+      nodes.forEach(node => {
+        node.x += node.vx;
+        node.y += node.vy;
+        node.pulse += 0.02;
+        
+        if (node.x < 0) node.x = canvas.width;
+        if (node.x > canvas.width) node.x = 0;
+        if (node.y < 0) node.y = canvas.height;
+        if (node.y > canvas.height) node.y = 0;
+      });
+      
+      // Draw connections
+      connections.forEach(conn => {
+        const from = nodes[conn.from];
+        const to = nodes[conn.to];
+        const alpha = conn.opacity * 0.3;
+        ctx.strokeStyle = `rgba(0, 255, 65, ${alpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.stroke();
+      });
+      
+      // Draw nodes
+      nodes.forEach(node => {
+        const pulseAlpha = 0.4 + Math.sin(node.pulse) * 0.3;
+        
+        // Glow
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.size * 3);
+        gradient.addColorStop(0, `rgba(0, 255, 65, ${pulseAlpha})`);
+        gradient.addColorStop(1, 'rgba(0, 255, 65, 0)');
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.size * 3, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Core
+        ctx.fillStyle = `rgba(0, 255, 65, ${pulseAlpha + 0.2})`;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      
+      requestAnimationFrame(drawCircuit);
+    }
+    
+    drawCircuit();
+
+    // AI Chatbot
     const aiChatBtn = document.getElementById('aiChatBtn');
     const aiChatPanel = document.getElementById('aiChatPanel');
     const aiChatClose = document.getElementById('aiChatClose');
@@ -1530,7 +1620,6 @@
     const aiChatInput = document.getElementById('aiChatInput');
     const aiChatSend = document.getElementById('aiChatSend');
 
-    // Portfolio knowledge base
     const portfolioData = {
       name: "David Clark",
       title: "Principal AI Platform Engineer",
@@ -1538,7 +1627,7 @@
       phone: "(650) 530-0517",
       email: "david.clark67@outlook.com",
       linkedin: "linkedin.com/in/david-clark-bab9053b9",
-      summary: "Ten years building production-grade AI systems and scalable full-stack platforms from feature engineering and NLP modeling to API integration and cloud deployment on AWS and Kubernetes. Works across ML, backend, and product layers, supporting systems that serve 100K+ daily users.",
+      summary: "Ten years building production-grade AI systems and scalable full-stack platforms. Works across ML, backend, and product layers, supporting systems that serve 100K+ daily users.",
       keyMetrics: {
         accuracy: "+28% prediction accuracy at PredictHQ",
         latency: "-35% data latency reduction",
@@ -1548,162 +1637,39 @@
         title: "Principal AI Platform Engineer",
         company: "PredictHQ",
         dates: "Sep 2022 – Present",
-        highlights: [
-          "Built AI-driven event intelligence pipelines processing 10M+ global events",
-          "Trained models with XGBoost and PyTorch, increasing inference throughput by 22%",
-          "Cut data latency by 35% through real-time ingestion using Kafka and AWS",
-          "Established automated model retraining, lowering drift incidents by 40%",
-          "Built NLP-based classification systems, raising tagging accuracy by 25%",
-          "Deployed CI/CD pipelines, shortening deployment time by 50%",
-          "Built observability with Prometheus and Grafana, sustaining 99.9% uptime"
-        ]
+        highlights: ["Built AI-driven event intelligence pipelines processing 10M+ global events", "Trained models with XGBoost and PyTorch increasing throughput by 22%", "Cut data latency by 35% through real-time ingestion using Kafka and AWS"]
       },
       previousRoles: [
-        {
-          title: "AI Platform Engineer",
-          company: "Prezi",
-          dates: "Mar 2020 – Aug 2022",
-          highlights: [
-            "Boosted user engagement by 20% with recommendation models",
-            "Built NLP pipelines increasing relevance scoring by 25%",
-            "Accelerated experimentation by 30% through A/B testing frameworks"
-          ]
-        },
-        {
-          title: "Senior Full Stack Engineer",
-          company: "Prezi",
-          dates: "Feb 2018 – Mar 2020",
-          highlights: [
-            "Boosted frontend performance by 30% with React and Redux",
-            "Supported 50K+ daily active users with Node.js and Python",
-            "Transitioned from monolith to microservices architecture"
-          ]
-        },
-        {
-          title: "Full Stack Engineer",
-          company: "Trbhi",
-          dates: "Jun 2016 – Dec 2017",
-          highlights: [
-            "Built 5+ scalable web applications",
-            "Migrated legacy infrastructure to MongoDB",
-            "Introduced testing across 8+ services"
-          ]
-        }
+        { title: "AI Platform Engineer", company: "Prezi", dates: "Mar 2020 – Aug 2022" },
+        { title: "Senior Full Stack Engineer", company: "Prezi", dates: "Feb 2018 – Mar 2020" },
+        { title: "Full Stack Engineer", company: "Trbhi", dates: "Jun 2016 – Dec 2017" }
       ],
       projects: [
-        {
-          name: "Real-Time Event Intelligence Pipeline",
-          description: "End-to-end real-time event intelligence system ingesting, classifying, and scoring millions of global events. Uses Kafka, Spark Streaming, XGBoost, PyTorch, FastAPI, AWS ECS, Terraform, Prometheus, and Grafana. Achieved 28% accuracy lift, 50% faster deployments, 99.9% uptime, and 20% cost reduction."
-        },
-        {
-          name: "RAG System with Automated Model Operations",
-          description: "Production-grade Retrieval-Augmented Generation system with chunking and embedding pipeline, vector database, LLM integration with streaming responses. Features automated drift detection, A/B testing framework, and CI/CD gating on evaluation benchmarks. Accelerated experimentation by 30%."
-        },
-        {
-          name: "Real-Time Feature Engineering Platform",
-          description: "Platform computing temporal, aggregate, and cross-entity features from streaming event logs. Uses Kafka Streams, Redis-backed feature store, Airflow DAGs. Deployed on Kubernetes with Docker and Terraform. Reduced latency by 35%, improved feature quality by 18%, tested across 8+ services."
-        }
+        { name: "Real-Time Event Intelligence Pipeline", description: "End-to-end system ingesting and scoring millions of events. Kafka, Spark, XGBoost, PyTorch, FastAPI, AWS ECS. 28% accuracy lift, 50% faster deployments, 99.9% uptime." },
+        { name: "RAG System with Automated Model Operations", description: "Production RAG system with vector DB, LLM streaming, drift detection, A/B testing. 30% faster experimentation." },
+        { name: "Real-Time Feature Engineering Platform", description: "Kafka Streams, Redis feature store, Airflow. Sub-10ms latency, 35% latency reduction, 18% feature quality improvement." }
       ],
-      skills: [
-        "AI/ML: RAG Systems, LLMs, PyTorch, TensorFlow, NLP, Deep Learning, Distributed AI",
-        "Languages: Python, TypeScript, JavaScript, Go, Java",
-        "Data & Streaming: Kafka, Spark, Airflow, Distributed Pipelines",
-        "Cloud: AWS (EC2, S3, Lambda, RDS, ECS), GCP, Kubernetes, Docker, Terraform",
-        "Databases: Vector DBs, PostgreSQL, MongoDB, Redis, MySQL, Elasticsearch",
-        "Testing: PyTest, Jest, Mocha, Cypress, TDD, Prometheus, Grafana"
-      ],
-      education: [
-        "Master of Science, Computer Science – Stratford University (2014-2016)",
-        "Bachelor of Science, Computer Science – Stratford University (2011-2014)"
-      ]
+      skills: ["AI/ML: RAG, LLMs, PyTorch, TensorFlow, NLP, Deep Learning", "Languages: Python, TypeScript, JavaScript, Go, Java", "Data: Kafka, Spark, Airflow", "Cloud: AWS, GCP, Kubernetes, Docker, Terraform", "Databases: Vector DBs, PostgreSQL, MongoDB, Redis"],
+      education: ["MS Computer Science – Stratford University (2014-2016)", "BS Computer Science – Stratford University (2011-2014)"]
     };
 
     function findAnswer(query) {
       const q = query.toLowerCase();
-      
-      // Contact info
-      if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach')) {
-        return `You can reach David at ${portfolioData.email} or ${portfolioData.phone}. He's based in ${portfolioData.location}.`;
-      }
-      
-      // LinkedIn
-      if (q.includes('linkedin') || q.includes('social')) {
-        return `David's LinkedIn profile is at ${portfolioData.linkedin}.`;
-      }
-      
-      // Current role
-      if (q.includes('current') || q.includes('now') || q.includes('present') || q.includes('predict')) {
-        return `David currently works as ${portfolioData.currentRole.title} at ${portfolioData.currentRole.company} (${portfolioData.currentRole.dates}). He ${portfolioData.currentRole.highlights[0].toLowerCase()}.`;
-      }
-      
-      // Experience overview
-      if (q.includes('experience') || q.includes('work') || q.includes('career') || q.includes('job')) {
-        return `David has 10 years of experience. His career path: Full Stack Engineer at Trbhi → Senior Full Stack Engineer at Prezi → AI Platform Engineer at Prezi → Principal AI Platform Engineer at PredictHQ (current). He specializes in AI platforms, real-time data pipelines, and production ML systems.`;
-      }
-      
-      // Projects
-      if (q.includes('project') || q.includes('built') || q.includes('portfolio')) {
-        const projectList = portfolioData.projects.map(p => `• ${p.name}: ${p.description.substring(0, 100)}...`).join('\n');
-        return `David has built 3 major projects:\n${projectList}\n\nWhich one would you like to know more about?`;
-      }
-      
-      // Specific project 1
-      if (q.includes('event intelligence') || q.includes('pipeline') || q.includes('project 1') || q.includes('first project')) {
-        return portfolioData.projects[0].description;
-      }
-      
-      // Specific project 2
-      if (q.includes('rag') || q.includes('retrieval') || q.includes('project 2') || q.includes('second project')) {
-        return portfolioData.projects[1].description;
-      }
-      
-      // Specific project 3
-      if (q.includes('feature engineering') || q.includes('feature platform') || q.includes('project 3') || q.includes('third project')) {
-        return portfolioData.projects[2].description;
-      }
-      
-      // Skills
-      if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('know') || q.includes('tool')) {
-        return `David's technical stack includes:\n${portfolioData.skills.join('\n')}`;
-      }
-      
-      // Metrics
-      if (q.includes('metric') || q.includes('result') || q.includes('impact') || q.includes('achievement') || q.includes('number')) {
-        return `Key metrics from David's work:\n• ${portfolioData.keyMetrics.accuracy}\n• ${portfolioData.keyMetrics.latency}\n• ${portfolioData.keyMetrics.users}`;
-      }
-      
-      // Education
-      if (q.includes('education') || q.includes('degree') || q.includes('university') || q.includes('school') || q.includes('study')) {
-        return `David's education:\n• ${portfolioData.education[0]}\n• ${portfolioData.education[1]}`;
-      }
-      
-      // Summary / About
-      if (q.includes('about') || q.includes('who') || q.includes('background') || q.includes('summary') || q.includes('intro')) {
-        return portfolioData.summary;
-      }
-      
-      // Prezi
-      if (q.includes('prezi')) {
-        return `David worked at Prezi in two roles:\n1. AI Platform Engineer (2020-2022): Boosted engagement by 20%, built NLP pipelines, accelerated experimentation by 30%.\n2. Senior Full Stack Engineer (2018-2020): Built React/Redux apps, supported 50K+ users, migrated to microservices.`;
-      }
-      
-      // PredictHQ
-      if (q.includes('predicthq')) {
-        return `At PredictHQ, David serves as Principal AI Platform Engineer. He built event intelligence pipelines processing 10M+ events, improved accuracy by 28%, cut latency by 35%, and maintains 99.9% uptime for 100K+ daily API requests.`;
-      }
-      
-      // Availability
-      if (q.includes('hire') || q.includes('available') || q.includes('job') || q.includes('opportunity') || q.includes('recruit')) {
-        return `David is currently open to Principal/Staff-level AI platform and infrastructure roles. You can reach him at ${portfolioData.email}.`;
-      }
-      
-      // Location
-      if (q.includes('location') || q.includes('where') || q.includes('based') || q.includes('live')) {
-        return `David is based in ${portfolioData.location}.`;
-      }
-      
-      // Default
-      return `I can tell you about David's experience, skills, projects, education, or how to contact him. What specifically would you like to know? Try asking about his current role, technical stack, key projects, or career background.`;
+      if (q.includes('contact') || q.includes('email') || q.includes('phone')) return `You can reach David at ${portfolioData.email} or ${portfolioData.phone}. Based in ${portfolioData.location}.`;
+      if (q.includes('linkedin')) return `David's LinkedIn: ${portfolioData.linkedin}.`;
+      if (q.includes('current') || q.includes('now') || q.includes('predicthq')) return `David is ${portfolioData.currentRole.title} at ${portfolioData.currentRole.company} (${portfolioData.currentRole.dates}). He ${portfolioData.currentRole.highlights[0].toLowerCase()}.`;
+      if (q.includes('experience') || q.includes('work') || q.includes('career')) return `10 years: Full Stack Engineer at Trbhi → Senior Full Stack at Prezi → AI Platform Engineer at Prezi → Principal AI Platform Engineer at PredictHQ.`;
+      if (q.includes('project')) return `3 major projects:\n• ${portfolioData.projects[0].name}\n• ${portfolioData.projects[1].name}\n• ${portfolioData.projects[2].name}\nWhich one interests you?`;
+      if (q.includes('pipeline') || q.includes('event intelligence')) return portfolioData.projects[0].description;
+      if (q.includes('rag') || q.includes('retrieval')) return portfolioData.projects[1].description;
+      if (q.includes('feature')) return portfolioData.projects[2].description;
+      if (q.includes('skill') || q.includes('tech') || q.includes('stack')) return `David's stack:\n${portfolioData.skills.join('\n')}`;
+      if (q.includes('metric') || q.includes('result') || q.includes('impact')) return `Key metrics: ${portfolioData.keyMetrics.accuracy}, ${portfolioData.keyMetrics.latency}, ${portfolioData.keyMetrics.users}.`;
+      if (q.includes('education') || q.includes('degree') || q.includes('university')) return `Education:\n• ${portfolioData.education[0]}\n• ${portfolioData.education[1]}`;
+      if (q.includes('about') || q.includes('who') || q.includes('background')) return portfolioData.summary;
+      if (q.includes('hire') || q.includes('available') || q.includes('opportunity')) return `David is open to Principal/Staff-level AI platform roles. Contact: ${portfolioData.email}.`;
+      if (q.includes('location') || q.includes('where') || q.includes('based')) return `Based in ${portfolioData.location}.`;
+      return `I can tell you about David's experience, skills, projects, education, or how to contact him. What would you like to know?`;
     }
 
     function addMessage(text, type) {
@@ -1731,124 +1697,28 @@
     function handleSend() {
       const query = aiChatInput.value.trim();
       if (!query) return;
-      
       addMessage(query, 'user');
       aiChatInput.value = '';
-      
       addTypingIndicator();
-      
       setTimeout(() => {
         removeTypingIndicator();
-        const answer = findAnswer(query);
-        addMessage(answer, 'bot');
+        addMessage(findAnswer(query), 'bot');
       }, 800 + Math.random() * 600);
     }
 
     aiChatBtn.addEventListener('click', () => {
       aiChatPanel.classList.toggle('open');
-      if (aiChatPanel.classList.contains('open')) {
-        aiChatInput.focus();
-      }
+      if (aiChatPanel.classList.contains('open')) aiChatInput.focus();
     });
-
-    aiChatClose.addEventListener('click', (e) => {
-      e.stopPropagation();
-      aiChatPanel.classList.remove('open');
-    });
-
+    aiChatClose.addEventListener('click', (e) => { e.stopPropagation(); aiChatPanel.classList.remove('open'); });
     aiChatSend.addEventListener('click', handleSend);
+    aiChatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.ai-chat-wrapper')) aiChatPanel.classList.remove('open'); });
 
-    aiChatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        handleSend();
-      }
-    });
-
-    // Close panel when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.ai-chat-wrapper')) {
-        aiChatPanel.classList.remove('open');
-      }
-    });
-    // Matrix Background
-    const canvas = document.getElementById('matrix-layer');
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    const charSets = [
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      '0123456789',
-      'アイウエオカキクケコサシスセソタチツテト',
-      '01',
-      '!@#$%^&*()_+-=[]{}|;:<>?/',
-      'abcdefghijklmnopqrstuvwxyz',
-      'αβγδεζηθικλμνξπρστυφχψω',
-      '░▒▓█▄▀■□▪▫●○◘◙'
-    ];
-    
-    const fontSize = 13;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = [];
-    
-    for (let i = 0; i < columns; i++) {
-      drops.push({
-        y: Math.random() * canvas.height / fontSize,
-        speed: 0.5 + Math.random() * 2.5,
-        charSet: charSets[Math.floor(Math.random() * charSets.length)],
-        opacity: 0.3 + Math.random() * 0.7,
-        fontSize: 10 + Math.random() * 8
-      });
-    }
-    
-    function drawMatrix() {
-      ctx.fillStyle = 'rgba(5, 5, 5, 0.08)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      for (let i = 0; i < drops.length; i++) {
-        const drop = drops[i];
-        const chars = drop.charSet;
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        const x = i * fontSize;
-        const y = drop.y * drop.fontSize;
-        
-        ctx.fillStyle = `rgba(0, 255, 65, ${drop.opacity + 0.4})`;
-        ctx.font = `bold ${drop.fontSize + 2}px "JetBrains Mono", monospace`;
-        ctx.fillText(text, x, y);
-        
-        for (let j = 1; j < 3; j++) {
-          const trailChar = chars[Math.floor(Math.random() * chars.length)];
-          const trailY = y - j * drop.fontSize * 2;
-          if (trailY > 0) {
-            ctx.fillStyle = `rgba(0, 255, 65, ${drop.opacity * 0.15 / j})`;
-            ctx.font = `${drop.fontSize}px "JetBrains Mono", monospace`;
-            ctx.fillText(trailChar, x, trailY);
-          }
-        }
-        
-        drop.y += drop.speed;
-        
-        if (drop.y * drop.fontSize > canvas.height && Math.random() > 0.97) {
-          drop.y = -2;
-          drop.charSet = charSets[Math.floor(Math.random() * charSets.length)];
-          drop.speed = 0.5 + Math.random() * 2.5;
-          drop.opacity = 0.3 + Math.random() * 0.7;
-        }
-      }
-    }
-    
-    setInterval(drawMatrix, 45);
-
-    // Neon swipe animation for hero name
+    // Hero name animation
     const heroName = document.getElementById('heroName');
     const nameText = heroName.textContent.trim();
     heroName.textContent = '';
-    
     const chars = [];
     [...nameText].forEach((char) => {
       const span = document.createElement('span');
@@ -1872,36 +1742,25 @@
     function swipeAnimation() {
       if (isAnimating) return;
       isAnimating = true;
-      
       const nextState = colorStates[stateIndex];
-      
       chars.forEach((char, i) => {
         setTimeout(() => {
           char.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, color 0.4s ease, text-shadow 0.4s ease';
           char.style.transform = 'translateX(40px)';
           char.style.opacity = '0';
-          
           setTimeout(() => {
             char.style.transition = 'transform 0s, opacity 0s, color 0s, text-shadow 0s';
             char.style.transform = 'translateX(-40px)';
             char.style.color = nextState.color;
             char.style.textShadow = nextState.shadow;
-            
             char.offsetHeight;
-            
             char.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, color 0.4s ease, text-shadow 0.4s ease';
             char.style.transform = 'translateX(0)';
             char.style.opacity = '1';
           }, 200);
         }, i * 30);
       });
-      
-      const totalTime = chars.length * 30 + 600;
-      
-      setTimeout(() => {
-        stateIndex = (stateIndex + 1) % colorStates.length;
-        isAnimating = false;
-      }, totalTime);
+      setTimeout(() => { stateIndex = (stateIndex + 1) % colorStates.length; isAnimating = false; }, chars.length * 30 + 600);
     }
     
     setTimeout(() => {
@@ -1909,28 +1768,16 @@
         char.style.transform = 'translateX(60px)';
         char.style.opacity = '0';
         char.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease';
-        
-        setTimeout(() => {
-          char.style.transform = 'translateX(0)';
-          char.style.opacity = '1';
-        }, 200 + i * 35);
+        setTimeout(() => { char.style.transform = 'translateX(0)'; char.style.opacity = '1'; }, 200 + i * 35);
       });
-      
-      setTimeout(() => {
-        setInterval(swipeAnimation, 4000);
-        swipeAnimation();
-      }, 200 + chars.length * 35 + 800);
+      setTimeout(() => { setInterval(swipeAnimation, 4000); swipeAnimation(); }, 200 + chars.length * 35 + 800);
     }, 300);
 
     // Scroll indicator
     const scrollIndicator = document.querySelector('.scroll-indicator');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        scrollIndicator.style.opacity = '0';
-        scrollIndicator.style.transition = 'opacity 0.3s ease';
-      } else {
-        scrollIndicator.style.opacity = '1';
-      }
+      scrollIndicator.style.opacity = window.scrollY > 100 ? '0' : '1';
+      scrollIndicator.style.transition = 'opacity 0.3s ease';
     });
 
     // Animated counting
@@ -1938,38 +1785,26 @@
       const target = parseInt(el.dataset.target);
       const suffix = el.dataset.suffix || '';
       const prefix = el.dataset.prefix || '';
-      const duration = 2000;
       const startTime = performance.now();
-      
       function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(target * eased);
+        const progress = Math.min((currentTime - startTime) / 2000, 1);
+        const current = Math.floor(target * (1 - Math.pow(1 - progress, 3)));
         el.textContent = prefix + current + suffix;
-        
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
+        if (progress < 1) requestAnimationFrame(update);
       }
-      
       requestAnimationFrame(update);
     }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const statNumbers = entry.target.querySelectorAll('.stat-number');
-          statNumbers.forEach(num => animateCount(num));
+          entry.target.querySelectorAll('.stat-number').forEach(num => animateCount(num));
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.5 });
-
     const statsGrid = document.querySelector('.stats-grid');
-    if (statsGrid) {
-      observer.observe(statsGrid);
-    }
+    if (statsGrid) observer.observe(statsGrid);
   </script>
 
 </body>
