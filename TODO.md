@@ -1,0 +1,5 @@
+- [ ] Redesign `index.html` styling to a catchier cyber/terminal theme
+- [ ] Keep all text/words/HTML content unchanged
+- [ ] Adjust CSS variables, colors, borders, frames, and background effects only
+- [ ] Re-check for accidental text changes and ensure responsiveness remains
+- [ ] Final completion report
