@@ -69,16 +69,7 @@
     transition: background var(--transition), color var(--transition);
   }
 
-  #circuit-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.35;
-  }
+  #circuit-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.35; }
   [data-theme="light"] #circuit-layer { opacity: 0.15; }
   a { color: inherit; text-decoration: none; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
@@ -88,7 +79,6 @@
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
     pointer-events: none; z-index: 998;
   }
-  [data-theme="light"] .scanlines { opacity: 0.4; }
 
   .navbar {
     position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 100;
@@ -97,12 +87,7 @@
     box-shadow: var(--glass-shadow); transition: all var(--transition);
   }
   .navbar .container { display: flex; align-items: center; justify-content: center; gap: 6px; height: auto; padding: 0; flex-wrap: wrap; }
-  .navbar-brand {
-    font-family: var(--tech); font-weight: 700; font-size: 13px; letter-spacing: 0.05em;
-    color: var(--accent); text-shadow: 0 0 12px var(--accent-glow);
-    padding: 8px 16px; border-right: 1px solid var(--glass-border); margin-right: 4px;
-    opacity: 0; animation: fadeSlideDown 0.8s 1.8s ease forwards;
-  }
+  .navbar-brand { font-family: var(--tech); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; color: var(--accent); text-shadow: 0 0 12px var(--accent-glow); padding: 8px 16px; border-right: 1px solid var(--glass-border); margin-right: 4px; opacity: 0; animation: fadeSlideDown 0.8s 1.8s ease forwards; }
   .navbar-nav { display: flex; align-items: center; gap: 4px; }
   .navbar-nav a {
     font-size: 12px; font-weight: 500; color: var(--ink-secondary); transition: all var(--transition);
@@ -118,39 +103,27 @@
   .navbar-nav a:nth-child(6) { animation-delay: 2.4s; }
   .navbar-nav a:hover { color: var(--accent); background: var(--accent-dim); border-color: rgba(0,255,65,0.25); text-shadow: 0 0 10px var(--accent-glow); }
 
-  /* Theme Toggle */
   .theme-toggle-btn {
-    display: flex; align-items: center; justify-content: center;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: var(--accent-dim); border: 1px solid var(--glass-border);
-    cursor: pointer; transition: all var(--transition);
-    opacity: 0; animation: fadeSlideDown 0.8s 2.5s ease forwards;
-    margin-left: 4px;
+    display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent-dim); border: 1px solid var(--glass-border); cursor: pointer;
+    transition: all var(--transition); opacity: 0; animation: fadeSlideDown 0.8s 2.5s ease forwards; margin-left: 4px;
   }
   .theme-toggle-btn:hover { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
   .theme-toggle-btn svg { width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .theme-toggle-btn .icon-sun { display: none; }
-  .theme-toggle-btn .icon-moon { display: block; }
-  [data-theme="light"] .theme-toggle-btn .icon-sun { display: block; }
-  [data-theme="light"] .theme-toggle-btn .icon-moon { display: none; }
+  .theme-toggle-btn .icon-sun { display: none; } .theme-toggle-btn .icon-moon { display: block; }
+  [data-theme="light"] .theme-toggle-btn .icon-sun { display: block; } [data-theme="light"] .theme-toggle-btn .icon-moon { display: none; }
 
   @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes pulse { 0%,100% { opacity:1; box-shadow:0 0 12px var(--accent),0 0 24px var(--accent-glow); } 50% { opacity:0.4; box-shadow:0 0 4px var(--accent),0 0 8px var(--accent-glow); } }
 
-  .hero {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    text-align: center; padding: 120px 0 80px; position: relative;
-  }
+  /* Main Page / Project Detail Page Toggle */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 0 80px; position: relative; }
   .hero-content { max-width: 780px; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600;
-    color: var(--accent); background: var(--glass-bg); backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
-    padding: 8px 20px; border-radius: 50px; margin-bottom: 24px; letter-spacing: 0.08em;
-    font-family: var(--heading); text-transform: uppercase; opacity: 0;
-    animation: fadeUp 0.8s 0.4s ease forwards; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
+  .hero-badge { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; color: var(--accent); background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); padding: 8px 20px; border-radius: 50px; margin-bottom: 24px; letter-spacing: 0.08em; font-family: var(--heading); text-transform: uppercase; opacity: 0; animation: fadeUp 0.8s 0.4s ease forwards; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
   .hero-badge .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 12px var(--accent),0 0 24px var(--accent-glow); animation:pulse 2s infinite; }
   .hero-job-title { font-family:var(--heading); font-size:14px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:16px; opacity:0; animation:fadeUp 0.8s 0.6s ease forwards; text-shadow:0 0 12px var(--accent-glow); }
   .hero h1 { font-family:var(--heading); font-weight:700; font-size:clamp(44px,7vw,72px); line-height:1.1; letter-spacing:0.01em; color:var(--ink); text-shadow:0 0 30px var(--accent-glow); margin-bottom:20px; opacity:0; animation:fadeUp 0.8s 0.8s ease forwards; text-transform:capitalize; }
@@ -166,24 +139,13 @@
   .section { padding: 80px 0; position: relative; }
   .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background var(--transition), border-color var(--transition); }
   .section-header { margin-bottom: 44px; text-align: center; }
-  .section-tag {
-    display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading);
-    font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase;
-    letter-spacing: 0.12em; margin-bottom: 16px; background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border); padding: 8px 20px; border-radius: 50px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading); font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); padding: 8px 20px; border-radius: 50px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .section-title { font-family: var(--heading); font-size: 32px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); }
   .section-subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; font-weight: 300; }
 
   .profile-text { font-size:17px; line-height:1.8; color:var(--ink-secondary); max-width:58ch; margin:0 auto 40px; text-align:center; font-weight:300; }
   .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:720px; margin:0 auto; }
-  .stat-card {
-    background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur);
-    border:1px solid var(--glass-border); border-radius:var(--radius-lg); padding:32px 20px;
-    text-align:center; transition:all var(--transition); position:relative; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.3);
-  }
+  .stat-card { background:var(--glass-bg); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); border-radius:var(--radius-lg); padding:32px 20px; text-align:center; transition:all var(--transition); position:relative; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.3); }
   .stat-card::before { content:''; position:absolute; top:0; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0; transition:opacity var(--transition); }
   .stat-card:hover::before { opacity:1; }
   .stat-card:hover { border-color:var(--accent); box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 24px var(--accent-glow); transform:translateY(-3px); }
@@ -198,11 +160,7 @@
   .timeline-entry:last-child .timeline-line { bottom: 0; background: linear-gradient(180deg, var(--border-glass), transparent); }
   .timeline-dot { position: absolute; left: 9px; top: 28px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); z-index: 1; box-shadow: 0 0 12px var(--accent-glow); }
   .timeline-entry.current .timeline-dot { box-shadow: 0 0 20px var(--accent), 0 0 36px var(--accent-glow); }
-  .exp-card {
-    background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: all var(--transition); cursor: pointer; overflow: hidden;
-  }
+  .exp-card { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: all var(--transition); cursor: pointer; overflow: hidden; }
   .exp-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow); }
   .exp-card-header { display: flex; align-items: center; padding: 24px 28px; gap: 20px; user-select: none; }
   .exp-card-body-inner { padding: 0 28px 24px; }
@@ -214,11 +172,7 @@
   .exp-card-meta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
   .exp-card-meta-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
   .exp-card-meta-item svg { width: 14px; height: 14px; color: var(--muted); flex-shrink: 0; }
-  .exp-card-chevron {
-    width: 36px; height: 36px; border-radius: 50%; background: var(--accent-dim);
-    border: 1px solid rgba(0,255,65,0.2); display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; transition: transform var(--transition); color: var(--accent);
-  }
+  .exp-card-chevron { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(0,255,65,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform var(--transition); color: var(--accent); }
   .exp-card.open .exp-card-chevron { transform: rotate(180deg); background: rgba(0,255,65,0.12); }
   .exp-card-chevron svg { width: 16px; height: 16px; stroke: var(--accent); }
   .exp-card-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
@@ -231,104 +185,54 @@
 
   /* Projects */
   .projects-grid { display: grid; gap: 20px; max-width: 900px; margin: 0 auto; }
-  .project-card {
-    background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border); border-radius: var(--radius-lg); transition: all var(--transition);
-    overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
+  .project-card { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); transition: all var(--transition); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer; }
   .project-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 24px var(--accent-glow); }
-  .project-header { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; cursor: pointer; user-select: none; gap: 16px; }
+  .project-header { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; user-select: none; gap: 16px; }
   .project-header-left { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; }
   .project-number { font-family: var(--tech); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-shadow: 0 0 10px var(--accent-glow); background: var(--accent-dim); display: inline-block; padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(0,255,65,0.15); white-space: nowrap; flex-shrink: 0; }
-  .project-header h3 { font-family: var(--heading); font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: 0.03em; text-transform: uppercase; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .project-toggle { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(0,255,65,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform var(--transition); color: var(--accent); }
-  .project-card.open .project-toggle { transform: rotate(180deg); background: rgba(0,255,65,0.12); }
-  .project-toggle svg { width: 14px; height: 14px; stroke: var(--accent); }
-  .project-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.4s ease; padding: 0 32px; }
-  .project-card.open .project-body { max-height: 800px; padding: 0 32px 28px; }
-  .project-body p { font-size: 14.5px; color: var(--ink-secondary); line-height: 1.75; font-weight: 300; margin-bottom: 16px; }
-  .project-body p .metric { font-family: var(--tech); font-weight: 700; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
-  .project-body .project-tech { display: flex; flex-wrap: wrap; gap: 8px; }
-  .project-body .project-tech span { font-family: var(--heading); font-size: 10px; padding: 5px 14px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(0,255,65,0.2); border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; transition: all var(--transition); }
-  .project-body .project-tech span:hover { background: rgba(0,255,65,0.12); box-shadow: 0 0 12px var(--accent-glow); }
+  .project-header h3 { font-family: var(--heading); font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: 0.03em; text-transform: uppercase; margin: 0; }
+  .project-arrow { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(0,255,65,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent); transition: all var(--transition); }
+  .project-card:hover .project-arrow { background: rgba(0,255,65,0.12); }
+  .project-arrow svg { width: 14px; height: 14px; stroke: var(--accent); }
 
-  /* ---------- REDESIGNED SKILLS ---------- */
+  /* Skills */
   .skills-grid-new { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
-  .skill-card-new {
-    background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 28px;
-    transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  }
+  .skill-card-new { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 28px; transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .skill-card-new:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 16px var(--accent-glow); }
   .skill-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-  .skill-icon-badge {
-    width: 40px; height: 40px; border-radius: var(--radius-sm);
-    background: var(--skill-icon-bg); display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; color: var(--accent);
-  }
+  .skill-icon-badge { width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--skill-icon-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent); }
   .skill-icon-badge svg { width: 20px; height: 20px; stroke: var(--accent); }
   .skill-card-title { font-family: var(--heading); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: 0.03em; text-transform: uppercase; }
   .skill-tags-new { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-pill {
-    font-size: 12px; padding: 6px 14px; background: transparent; color: var(--ink-secondary);
-    border: 1px solid var(--border); border-radius: 50px; font-weight: 400;
-    transition: all var(--transition); font-family: var(--body); letter-spacing: 0.01em;
-  }
+  .skill-pill { font-size: 12px; padding: 6px 14px; background: transparent; color: var(--ink-secondary); border: 1px solid var(--border); border-radius: 50px; font-weight: 400; transition: all var(--transition); font-family: var(--body); letter-spacing: 0.01em; }
   .skill-pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
   .education-cards { display: grid; gap: 16px; max-width: 600px; margin: 0 auto; }
-  .education-card {
-    display: flex; justify-content: space-between; align-items: center; gap: 20px;
-    background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 28px 32px;
-    transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  }
+  .education-card { display: flex; justify-content: space-between; align-items: center; gap: 20px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 28px 32px; transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .education-card:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 16px var(--accent-glow); }
   .education-info h3 { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; font-family: var(--heading); letter-spacing: 0.02em; }
   .education-info .school { font-size: 14px; color: var(--muted); font-weight: 300; }
   .education-date { font-family: var(--tech); font-size: 11px; color: var(--accent); white-space: nowrap; letter-spacing: 0.06em; background: var(--accent-dim); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(0,255,65,0.15); }
 
   .oss-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
-  .oss-card {
-    background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 24px;
-    transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-align: center;
-  }
+  .oss-card { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 24px; transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-align: center; }
   .oss-card:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 16px var(--accent-glow); }
   .oss-card h3 { font-family: var(--heading); font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
   .oss-card p { font-size: 13px; color: var(--ink-secondary); margin-bottom: 14px; font-weight: 300; }
   .oss-card .metric { font-family: var(--tech); font-weight: 700; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
   .oss-card .project-tech { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .oss-card .project-tech span { font-family: var(--heading); font-size: 10px; padding: 5px 14px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(0,255,65,0.2); border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; transition: all var(--transition); }
+  .oss-card .project-tech span { font-family: var(--heading); font-size: 10px; padding: 5px 14px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(0,255,65,0.2); border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
 
   .contact-section { text-align: center; padding: 80px 0; }
   .contact-title { font-size: clamp(28px, 5vw, 38px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 14px; font-family: var(--heading); text-transform: uppercase; }
   .contact-text { font-size: 16px; color: var(--ink-secondary); margin-bottom: 40px; font-weight: 300; }
   .contact-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading);
-    font-size: 13px; font-weight: 600; padding: 14px 28px; border-radius: 50px;
-    border: 1px solid var(--glass-border); background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-    color: var(--ink); cursor: pointer; transition: all var(--transition);
-    text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading); font-size: 13px; font-weight: 600; padding: 14px 28px; border-radius: 50px; border: 1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); color: var(--ink); cursor: pointer; transition: all var(--transition); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow); }
   .btn-primary { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }
-  .btn-primary:hover { background: var(--accent-dark); color: #000; box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 28px var(--accent-glow); }
+  .btn-primary:hover { background: var(--accent-dark); color: #000; }
 
-  /* Floating Download Resume Button */
-  .floating-resume {
-    position: fixed; bottom: 28px; left: 28px; z-index: 150;
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: var(--heading); font-size: 13px; font-weight: 700;
-    padding: 12px 22px; border-radius: 50px;
-    background: var(--accent); border: 2px solid var(--accent); color: #000;
-    cursor: pointer; transition: all var(--transition); text-decoration: none;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    box-shadow: 0 0 20px var(--accent-glow), 0 4px 16px rgba(0,0,0,0.4);
-  }
+  .floating-resume { position: fixed; bottom: 28px; left: 28px; z-index: 150; display: inline-flex; align-items: center; gap: 10px; font-family: var(--heading); font-size: 13px; font-weight: 700; padding: 12px 22px; border-radius: 50px; background: var(--accent); border: 2px solid var(--accent); color: #000; cursor: pointer; transition: all var(--transition); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; box-shadow: 0 0 20px var(--accent-glow), 0 4px 16px rgba(0,0,0,0.4); }
   .floating-resume:hover { transform: scale(1.05); box-shadow: 0 0 32px var(--accent-glow), 0 8px 24px rgba(0,0,0,0.5); }
   .floating-resume svg { width: 16px; height: 16px; stroke: #000; }
 
@@ -345,33 +249,42 @@
   @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
 
   .tools-scroll { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 700px; margin: 0 auto; }
-  .tool-item {
-    font-family: var(--tech); font-size: 12px; padding: 8px 18px;
-    background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
-    border-radius: 50px; color: var(--ink-secondary); transition: all var(--transition);
-  }
+  .tool-item { font-family: var(--tech); font-size: 12px; padding: 8px 18px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 50px; color: var(--ink-secondary); transition: all var(--transition); }
   .tool-item:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
 
+  /* ---------- PROJECT DETAIL PAGE ---------- */
+  .project-detail { padding: 120px 0 80px; }
+  .back-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading); font-size: 13px; font-weight: 600; color: var(--accent); cursor: pointer; margin-bottom: 40px; transition: all var(--transition); text-transform: uppercase; letter-spacing: 0.06em; }
+  .back-btn:hover { text-shadow: 0 0 10px var(--accent-glow); }
+  .back-btn svg { width: 16px; height: 16px; stroke: var(--accent); }
+  .project-detail-header { text-align: center; margin-bottom: 48px; }
+  .project-detail-tag { font-family: var(--tech); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; background: var(--accent-dim); display: inline-block; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(0,255,65,0.15); margin-bottom: 16px; }
+  .project-detail-header h2 { font-family: var(--heading); font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: var(--ink); letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 12px; }
+  .project-detail-header .project-subtitle { font-size: 16px; color: var(--muted); max-width: 50ch; margin: 0 auto; font-weight: 300; }
+  .project-detail-image { width: 100%; max-width: 800px; margin: 0 auto 48px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 8px 32px rgba(0,0,0,0.4); background: var(--bg-alt); display: flex; align-items: center; justify-content: center; min-height: 300px; }
+  .project-detail-image .placeholder-img { display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--muted); font-family: var(--tech); font-size: 13px; }
+  .project-detail-image svg { width: 64px; height: 64px; stroke: var(--accent); opacity: 0.3; }
+  .project-detail-content { max-width: 800px; margin: 0 auto; display: grid; gap: 32px; }
+  .project-detail-section h3 { font-family: var(--heading); font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+  .project-detail-section p { font-size: 15px; color: var(--ink-secondary); line-height: 1.75; font-weight: 300; }
+  .project-detail-section p .metric { font-family: var(--tech); font-weight: 700; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+  .project-detail-section ul { list-style: none; }
+  .project-detail-section li { position: relative; padding-left: 20px; font-size: 14.5px; color: var(--ink-secondary); margin-bottom: 8px; line-height: 1.6; font-weight: 300; }
+  .project-detail-section li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+  .project-detail-tech { display: flex; flex-wrap: wrap; gap: 10px; }
+  .project-detail-tech span { font-family: var(--heading); font-size: 12px; padding: 8px 18px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(0,255,65,0.2); border-radius: 50px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .project-detail-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .project-detail-metric { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 24px 16px; text-align: center; }
+  .project-detail-metric .metric-value { font-family: var(--heading); font-weight: 700; font-size: 28px; color: var(--accent); text-shadow: 0 0 16px var(--accent-glow); }
+  .project-detail-metric .metric-label { font-size: 11px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+
   .ai-chat-wrapper { position: fixed; bottom: 24px; right: 24px; z-index: 200; }
-  .ai-chat-btn {
-    width: 56px; height: 56px; border-radius: 50%; background: var(--accent); border: 2px solid var(--accent);
-    color: #000; font-family: var(--tech); font-size: 11px; font-weight: 700; cursor: pointer;
-    box-shadow: 0 0 24px var(--accent-glow), 0 4px 20px rgba(0,0,0,0.5); transition: all 0.3s ease;
-    display: flex; align-items: center; justify-content: center; position: relative; letter-spacing: 0.04em;
-    animation: float 3s ease-in-out infinite;
-  }
+  .ai-chat-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--accent); border: 2px solid var(--accent); color: #000; font-family: var(--tech); font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 0 24px var(--accent-glow), 0 4px 20px rgba(0,0,0,0.5); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; position: relative; letter-spacing: 0.04em; animation: float 3s ease-in-out infinite; }
   .ai-chat-btn:hover { transform: scale(1.1); box-shadow: 0 0 40px var(--accent), 0 8px 30px rgba(0,0,0,0.6); }
   .ai-chat-btn .pulse-ring { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--accent); animation: pulseRing 2s ease-out infinite; }
   @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  .ai-chat-panel {
-    position: absolute; bottom: 72px; right: 0; width: 380px; max-height: 520px;
-    background: rgba(10,10,30,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.7), 0 0 30px var(--accent-glow);
-    display: flex; flex-direction: column; overflow: hidden;
-    transform: scale(0.9); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  }
+  .ai-chat-panel { position: absolute; bottom: 72px; right: 0; width: 380px; max-height: 520px; background: rgba(10,10,30,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); box-shadow: 0 16px 48px rgba(0,0,0,0.7), 0 0 30px var(--accent-glow); display: flex; flex-direction: column; overflow: hidden; transform: scale(0.9); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
   [data-theme="light"] .ai-chat-panel { background: rgba(255,255,255,0.95); }
   .ai-chat-panel.open { transform: scale(1); opacity: 1; pointer-events: all; }
   .ai-chat-header { padding: 16px 20px; border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between; }
@@ -406,6 +319,7 @@
     .contact-buttons { flex-direction:column; align-items:stretch; } .btn { justify-content:center; }
     .footer .container { flex-direction:column; text-align:center; } .hero h1 { font-size:36px; }
     .floating-resume { bottom: 16px; left: 16px; font-size: 11px; padding: 10px 18px; }
+    .project-detail-metrics { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .navbar-nav a:nth-child(4) { display:none; } .hero h1 { font-size:28px; } .section-title { font-size:24px; }
@@ -428,272 +342,311 @@
     </div>
   </div>
 
-  <!-- Floating Resume Button -->
   <a href="David_Clark_Resume.pdf" class="floating-resume" download>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download Resume
   </a>
 
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-nav">
-        <a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
-        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </div>
-    </div>
-  </nav>
+  <!-- ========== MAIN PORTFOLIO PAGE ========== -->
+  <div id="mainPage" class="page active">
 
-  <header class="hero" id="home">
-    <div class="container hero-content">
-      <div class="hero-badge"><span class="dot"></span> System Online</div>
-      <div class="hero-job-title">Principal AI Platform Engineer</div>
-      <h1>David Clark</h1>
-      <p class="hero-subtitle">I build <strong>real-time data pipelines</strong> and <strong>production ML systems</strong> that hold up at scale.</p>
-      <div class="hero-meta">
-        <span class="hero-meta-item">Rochester, MN</span><span class="hero-meta-divider">|</span>
-        <span class="hero-meta-item">(650) 530-0517</span><span class="hero-meta-divider">|</span>
-        <span class="hero-meta-item"><a href="mailto:david.clark67@outlook.com">david.clark67@outlook.com</a></span><span class="hero-meta-divider">|</span>
-        <span class="hero-meta-item"><a href="https://linkedin.com/in/david-clark-bab9053b9" target="_blank" rel="noopener">LinkedIn</a></span>
+    <nav class="navbar">
+      <div class="container">
+         <div class="navbar-nav">
+          <a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+          <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="scroll-indicator"><span>Scroll</span><div class="scroll-line"></div></div>
-  </header>
+    </nav>
 
-  <section id="profile" class="section section-alt">
-    <div class="container">
-      <div class="section-header"><div class="section-tag">[ 01 ] Profile</div><h2 class="section-title">About Me</h2></div>
-      <p class="profile-text">Ten years building production-grade AI systems and scalable full-stack platforms from feature engineering and NLP modeling to API integration and cloud deployment on AWS and Kubernetes. I work across the ML, backend, and product layers, supporting systems that serve 100K+ daily users while keeping an eye on the number that actually matters: measurable business impact.</p>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-number" data-target="28" data-suffix="%+" data-prefix="">0%</div><div class="stat-label">prediction accuracy at PredictHQ</div></div>
-        <div class="stat-card"><div class="stat-number" data-target="35" data-suffix="%-" data-prefix="">0%</div><div class="stat-label">data latency, high-volume ingestion</div></div>
-        <div class="stat-card"><div class="stat-number" data-target="100" data-suffix="K+" data-prefix="">0</div><div class="stat-label">daily users served in production</div></div>
+    <header class="hero" id="home">
+      <div class="container hero-content">
+        <div class="hero-badge"><span class="dot"></span> System Online</div>
+        <div class="hero-job-title">Principal AI Platform Engineer</div>
+        <h1>David Clark</h1>
+        <p class="hero-subtitle">I build <strong>real-time data pipelines</strong> and <strong>production ML systems</strong> that hold up at scale.</p>
+        <div class="hero-meta">
+          <span class="hero-meta-item">Rochester, MN</span><span class="hero-meta-divider">|</span>
+          <span class="hero-meta-item">(650) 530-0517</span><span class="hero-meta-divider">|</span>
+          <span class="hero-meta-item"><a href="mailto:david.clark67@outlook.com">david.clark67@outlook.com</a></span><span class="hero-meta-divider">|</span>
+          <span class="hero-meta-item"><a href="https://linkedin.com/in/david-clark-bab9053b9" target="_blank" rel="noopener">LinkedIn</a></span>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="scroll-indicator"><span>Scroll</span><div class="scroll-line"></div></div>
+    </header>
 
-  <section id="experience" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">EXPERIENCE</div>
-        <h2 class="section-title">A timeline of <span style="color: var(--accent);">growth.</span></h2>
-        <p class="section-subtitle">Click any role to expand details.</p>
-      </div>
-      <div class="timeline-wrapper">
-        <div class="timeline-entry current"><div class="timeline-line"></div><div class="timeline-dot"></div>
-          <div class="exp-card" role="button" tabindex="0" aria-expanded="false">
-            <div class="exp-card-header"><div class="exp-card-info">
-              <div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREDICTHQ</span></div>
-              <div class="exp-card-title">Principal AI Platform Engineer</div>
-              <div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sep 2022 – Present</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div>
-            </div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-            <div class="exp-card-body"><div class="exp-card-body-inner"><ul>
-              <li>Built AI-driven event intelligence pipelines processing <span class="metric">10M+</span> global events, boosting forecasting accuracy by <span class="metric">28%</span>.</li>
-              <li>Trained models with XGBoost and PyTorch, increasing inference throughput by <span class="metric">22%</span> in production.</li>
-              <li>Cut data latency by <span class="metric">35%</span> through real-time ingestion pipelines using Kafka and AWS.</li>
-              <li>Elevated feature quality by <span class="metric">18%</span> via temporal and geospatial feature engineering.</li>
-              <li>Established automated model retraining and monitoring, lowering drift incidents by <span class="metric">40%</span>.</li>
-              <li>Built NLP-based classification systems, raising event tagging accuracy by <span class="metric">25%</span>.</li>
-              <li>Streamlined hybrid batch and streaming inference, trimming infrastructure costs by <span class="metric">20%</span>.</li>
-              <li>Supported AI-powered APIs handling <span class="metric">100K+</span> daily requests at stable, low latency.</li>
-              <li>Deployed CI/CD pipelines for ML services, shortening deployment time by <span class="metric">50%</span>.</li>
-              <li>Built observability with Prometheus and Grafana, sustaining <span class="metric">99.9%</span> uptime.</li>
-              <li>Mentored engineers on ML system design, strengthening delivery speed and reliability.</li>
-            </ul></div></div>
-          </div>
-        </div>
-        <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div>
-          <div class="exp-card" role="button" tabindex="0" aria-expanded="false">
-            <div class="exp-card-header"><div class="exp-card-info">
-              <div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div>
-              <div class="exp-card-title">AI Platform Engineer</div>
-              <div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Mar 2020 – Aug 2022</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div>
-            </div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-            <div class="exp-card-body"><div class="exp-card-body-inner"><ul>
-              <li>Boosted user engagement by <span class="metric">20%</span> with personalized content recommendation models.</li>
-              <li>Built NLP pipelines for slide content analysis, increasing relevance scoring accuracy by <span class="metric">25%</span>.</li>
-              <li>Built user behavior prediction models that raised retention by <span class="metric">15%</span>.</li>
-              <li>Accelerated experimentation cycles by <span class="metric">30%</span> through A/B testing frameworks for AI features.</li>
-              <li>Streamlined data pipelines with Spark, reducing processing time by <span class="metric">35%</span>.</li>
-              <li>Productionized ML models with cross-functional teams, cutting deployment friction by <span class="metric">40%</span>.</li>
-              <li>Enabled real-time content suggestions using React and Flask-based AI features.</li>
-              <li>Delivered backend APIs for ML services, supporting scalable integration across applications.</li>
-            </ul></div></div>
-          </div>
-        </div>
-        <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div>
-          <div class="exp-card" role="button" tabindex="0" aria-expanded="false">
-            <div class="exp-card-header"><div class="exp-card-info">
-              <div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div>
-              <div class="exp-card-title">Senior Full Stack Engineer</div>
-              <div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Feb 2018 – Mar 2020</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div>
-            </div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-            <div class="exp-card-body"><div class="exp-card-body-inner"><ul>
-              <li>Boosted frontend performance by <span class="metric">30%</span> building scalable React and Redux applications.</li>
-              <li>Developed backend services supporting <span class="metric">50K+</span> daily active users using Node.js and Python.</li>
-              <li>Increased query performance by <span class="metric">25%</span> through efficient PostgreSQL schema design.</li>
-              <li>Cut page load time by <span class="metric">40%</span> with frontend optimization and lazy loading.</li>
-              <li>Strengthened system reliability by moving from monolith to microservices architecture.</li>
-            </ul></div></div>
-          </div>
-        </div>
-        <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div>
-          <div class="exp-card" role="button" tabindex="0" aria-expanded="false">
-            <div class="exp-card-header"><div class="exp-card-info">
-              <div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">TRBHI</span></div>
-              <div class="exp-card-title">Full Stack Engineer</div>
-              <div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Jun 2016 – Dec 2017</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div>
-            </div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-            <div class="exp-card-body"><div class="exp-card-body-inner"><ul>
-              <li>Built <span class="metric">5+</span> scalable web applications, increasing transaction efficiency.</li>
-              <li>Enhanced frontend responsiveness using React and Node.js, reducing load times.</li>
-              <li>Re-architected database systems, migrating legacy infrastructure to MongoDB for scalability.</li>
-              <li>Implemented CI/CD pipelines with Jenkins, accelerating release cycles.</li>
-              <li>Introduced unit and integration testing across <span class="metric">8+</span> services, improving stability.</li>
-              <li>Integrated third-party services while maintaining <span class="metric">99.9%</span> availability.</li>
-            </ul></div></div>
-          </div>
+    <section id="profile" class="section section-alt">
+      <div class="container">
+        <div class="section-header"><div class="section-tag">[ 01 ] Profile</div><h2 class="section-title">About Me</h2></div>
+        <p class="profile-text">Ten years building production-grade AI systems and scalable full-stack platforms from feature engineering and NLP modeling to API integration and cloud deployment on AWS and Kubernetes. I work across the ML, backend, and product layers, supporting systems that serve 100K+ daily users while keeping an eye on the number that actually matters: measurable business impact.</p>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-number" data-target="28" data-suffix="%+" data-prefix="">0%</div><div class="stat-label">prediction accuracy at PredictHQ</div></div>
+          <div class="stat-card"><div class="stat-number" data-target="35" data-suffix="%-" data-prefix="">0%</div><div class="stat-label">data latency, high-volume ingestion</div></div>
+          <div class="stat-card"><div class="stat-number" data-target="100" data-suffix="K+" data-prefix="">0</div><div class="stat-label">daily users served in production</div></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects" class="section section-alt">
-    <div class="container">
-      <div class="section-header"><div class="section-tag">[ 03 ] Projects</div><h2 class="section-title">Projects</h2></div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-header"><div class="project-header-left"><span class="project-number">PROJECT_01</span><h3>Real-Time Event Intelligence Pipeline</h3></div><div class="project-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-          <div class="project-body"><p>I built an end-to-end real-time event intelligence system that ingests, classifies, and scores millions of global events to power demand forecasting for enterprise clients. The pipeline consumes raw event streams from multiple data sources through Kafka, processes them with Spark Streaming for real-time enrichment including NLP-based classification, geospatial tagging, and temporal feature extraction then serves predictions through a low-latency FastAPI layer. I trained XGBoost and PyTorch models on historical event impact data, achieving a <span class="metric">28%</span> lift in forecasting accuracy over the baseline. I designed the infrastructure on AWS ECS with Terraform, set up automated CI/CD pipelines through GitHub Actions that cut deployment time by <span class="metric">50%</span>, and built Prometheus and Grafana dashboards that monitor throughput, latency, and model drift across the entire system, sustaining <span class="metric">99.9%</span> uptime while handling <span class="metric">100K+</span> daily API requests. The hybrid batch-and-streaming inference architecture I designed reduced infrastructure costs by <span class="metric">20%</span> without sacrificing performance.</p><div class="project-tech"><span>Kafka</span><span>Spark</span><span>XGBoost</span><span>PyTorch</span><span>FastAPI</span><span>AWS ECS</span><span>Terraform</span><span>Prometheus</span><span>Grafana</span></div></div>
-        </div>
-        <div class="project-card">
-          <div class="project-header"><div class="project-header-left"><span class="project-number">PROJECT_02</span><h3>RAG System with Automated Model Operations</h3></div><div class="project-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-          <div class="project-body"><p>I built a production-grade Retrieval-Augmented Generation system over a large domain-specific document corpus, designed from the ground up for reliability and observability. I implemented a chunking and embedding pipeline that processes documents into a vector database, selecting chunking strategies and embedding models through an A/B testing framework I wrote from scratch, accelerating experimentation cycles by <span class="metric">30%</span>. The retrieval layer combines semantic search with metadata filtering, and I integrated an LLM with streaming response generation behind a REST API built in FastAPI. What makes this system production-ready is the operations layer I built around it: automated drift detection that triggers model retraining when embedding quality degrades, a monitoring stack with Prometheus metrics tracking retrieval precision and generation latency, and a CI/CD pipeline that gates deployments on evaluation benchmarks. I mentored two engineers on the team through the design, focusing on testing strategies and deployment patterns that reduced production incidents.</p><div class="project-tech"><span>RAG</span><span>LLMs</span><span>Vector DB</span><span>FastAPI</span><span>Prometheus</span><span>CI/CD</span><span>A/B Testing</span></div></div>
-        </div>
-        <div class="project-card">
-          <div class="project-header"><div class="project-header-left"><span class="project-number">PROJECT_03</span><h3>Real-Time Feature Engineering Platform</h3></div><div class="project-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-          <div class="project-body"><p>I built a real-time feature engineering platform that computes temporal, aggregate, and cross-entity features from raw streaming event logs and serves them to ML models with sub-10ms latency. The platform uses Kafka Streams for windowed aggregations including rolling counts, sessionization, and decay-weighted metrics combined with Airflow DAGs for offline feature backfills and training dataset generation. I designed a Redis-backed online feature store that decouples feature computation from model serving, allowing multiple downstream models to consume the same features without redundant processing. This architecture reduced data latency by <span class="metric">35%</span> compared to the previous batch-only approach and improved feature quality metrics by <span class="metric">18%</span> through richer temporal and geospatial signal capture. I packaged the entire platform with Docker and Terraform, deployed it on Kubernetes, and wrote integration tests across <span class="metric">8+</span> services using PyTest to ensure stability through frequent releases.</p><div class="project-tech"><span>Kafka Streams</span><span>Redis</span><span>Airflow</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>PyTest</span></div></div>
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header"><div class="section-tag">EXPERIENCE</div><h2 class="section-title">A timeline of <span style="color: var(--accent);">growth.</span></h2><p class="section-subtitle">Click any role to expand details.</p></div>
+        <div class="timeline-wrapper">
+          <div class="timeline-entry current"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREDICTHQ</span></div><div class="exp-card-title">Principal AI Platform Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sep 2022 – Present</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Built AI-driven event intelligence pipelines processing <span class="metric">10M+</span> global events, boosting forecasting accuracy by <span class="metric">28%</span>.</li><li>Trained models with XGBoost and PyTorch, increasing inference throughput by <span class="metric">22%</span> in production.</li><li>Cut data latency by <span class="metric">35%</span> through real-time ingestion pipelines using Kafka and AWS.</li><li>Established automated model retraining and monitoring, lowering drift incidents by <span class="metric">40%</span>.</li><li>Built observability with Prometheus and Grafana, sustaining <span class="metric">99.9%</span> uptime.</li></ul></div></div></div></div>
+          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div><div class="exp-card-title">AI Platform Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Mar 2020 – Aug 2022</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Boosted user engagement by <span class="metric">20%</span> with personalized content recommendation models.</li><li>Built NLP pipelines for slide content analysis, increasing relevance scoring accuracy by <span class="metric">25%</span>.</li><li>Accelerated experimentation cycles by <span class="metric">30%</span> through A/B testing frameworks for AI features.</li><li>Productionized ML models with cross-functional teams, cutting deployment friction by <span class="metric">40%</span>.</li></ul></div></div></div></div>
+          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div><div class="exp-card-title">Senior Full Stack Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Feb 2018 – Mar 2020</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Boosted frontend performance by <span class="metric">30%</span> building scalable React and Redux applications.</li><li>Developed backend services supporting <span class="metric">50K+</span> daily active users using Node.js and Python.</li><li>Strengthened system reliability by moving from monolith to microservices architecture.</li></ul></div></div></div></div>
+          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">TRBHI</span></div><div class="exp-card-title">Full Stack Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Jun 2016 – Dec 2017</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Built <span class="metric">5+</span> scalable web applications, increasing transaction efficiency.</li><li>Implemented CI/CD pipelines with Jenkins, accelerating release cycles.</li><li>Introduced unit and integration testing across <span class="metric">8+</span> services, improving stability.</li></ul></div></div></div></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- REDESIGNED SKILLS SECTION -->
-  <section id="skills" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">SKILLS</div>
-        <h2 class="section-title">A growing <span style="color: var(--accent);">tech stack.</span></h2>
-        <p class="section-subtitle">Technologies I work with daily across the full ML lifecycle.</p>
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <div class="section-header"><div class="section-tag">[ 03 ] Projects</div><h2 class="section-title">Projects</h2><p class="section-subtitle">Click any project to view full details.</p></div>
+        <div class="projects-grid">
+          <div class="project-card" onclick="showProject('project1')">
+            <div class="project-header">
+              <div class="project-header-left"><span class="project-number">PROJECT_01</span><h3>Real-Time Event Intelligence Pipeline</h3></div>
+              <div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            </div>
+          </div>
+          <div class="project-card" onclick="showProject('project2')">
+            <div class="project-header">
+              <div class="project-header-left"><span class="project-number">PROJECT_02</span><h3>RAG System with Automated Model Operations</h3></div>
+              <div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            </div>
+          </div>
+          <div class="project-card" onclick="showProject('project3')">
+            <div class="project-header">
+              <div class="project-header-left"><span class="project-number">PROJECT_03</span><h3>Real-Time Feature Engineering Platform</h3></div>
+              <div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="skills-grid-new">
-        <div class="skill-card-new">
-          <div class="skill-card-header">
-            <div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-            <div class="skill-card-title">AI / ML Core</div>
-          </div>
-          <div class="skill-tags-new">
-            <span class="skill-pill">RAG Systems</span><span class="skill-pill">LLMs</span><span class="skill-pill">PyTorch</span><span class="skill-pill">TensorFlow</span><span class="skill-pill">NLP</span><span class="skill-pill">Model Deployment</span><span class="skill-pill">Feature Engineering</span><span class="skill-pill">Deep Learning</span><span class="skill-pill">Distributed AI Systems</span>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header"><div class="section-tag">SKILLS</div><h2 class="section-title">A growing <span style="color: var(--accent);">tech stack.</span></h2><p class="section-subtitle">Technologies I work with daily across the full ML lifecycle.</p></div>
+        <div class="skills-grid-new">
+          <div class="skill-card-new"><div class="skill-card-header"><div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="skill-card-title">AI / ML Core</div></div><div class="skill-tags-new"><span class="skill-pill">RAG Systems</span><span class="skill-pill">LLMs</span><span class="skill-pill">PyTorch</span><span class="skill-pill">TensorFlow</span><span class="skill-pill">NLP</span><span class="skill-pill">Model Deployment</span><span class="skill-pill">Feature Engineering</span><span class="skill-pill">Deep Learning</span><span class="skill-pill">Distributed AI Systems</span></div></div>
+          <div class="skill-card-new"><div class="skill-card-header"><div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="skill-card-title">Languages</div></div><div class="skill-tags-new"><span class="skill-pill">Python</span><span class="skill-pill">TypeScript</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Go</span><span class="skill-pill">Java</span></div></div>
+          <div class="skill-card-new"><div class="skill-card-header"><div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="skill-card-title">Data & Streaming</div></div><div class="skill-tags-new"><span class="skill-pill">Kafka</span><span class="skill-pill">Spark</span><span class="skill-pill">Airflow</span><span class="skill-pill">Distributed Data Pipelines</span></div></div>
+          <div class="skill-card-new"><div class="skill-card-header"><div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div class="skill-card-title">Cloud & Infra</div></div><div class="skill-tags-new"><span class="skill-pill">AWS</span><span class="skill-pill">GCP</span><span class="skill-pill">Kubernetes</span><span class="skill-pill">Docker</span><span class="skill-pill">Terraform</span><span class="skill-pill">CI/CD</span></div></div>
+          <div class="skill-card-new"><div class="skill-card-header"><div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="skill-card-title">Databases</div></div><div class="skill-tags-new"><span class="skill-pill">Vector DBs</span><span class="skill-pill">PostgreSQL</span><span class="skill-pill">MongoDB</span><span class="skill-pill">Redis</span><span class="skill-pill">MySQL</span><span class="skill-pill">Elasticsearch</span></div></div>
+          <div class="skill-card-new"><div class="skill-card-header"><div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="skill-card-title">Testing & Tools</div></div><div class="skill-tags-new"><span class="skill-pill">PyTest</span><span class="skill-pill">Jest</span><span class="skill-pill">Mocha</span><span class="skill-pill">Cypress</span><span class="skill-pill">TDD</span><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">GitLab</span><span class="skill-pill">Jira</span><span class="skill-pill">Prometheus</span><span class="skill-pill">Grafana</span><span class="skill-pill">Nginx</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section section-alt">
+      <div class="container"><div class="section-header"><div class="section-tag">[ 05 ] Education</div><h2 class="section-title">Academic Background</h2></div>
+        <div class="education-cards">
+          <div class="education-card"><div class="education-info"><h3>Master of Science, Computer Science</h3><div class="school">Stratford University</div></div><span class="education-date">Sep 2014 - Jun 2016</span></div>
+          <div class="education-card"><div class="education-info"><h3>Bachelor of Science, Computer Science</h3><div class="school">Stratford University</div></div><span class="education-date">Jan 2011 - Jun 2014</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opensource" class="section">
+      <div class="container"><div class="section-header"><div class="section-tag">[ 06 ] Open Source</div><h2 class="section-title">Open Source</h2></div>
+        <div class="oss-grid">
+          <div class="oss-card"><h3>spark-nlp-pipeline</h3><p>Production-ready NLP pipeline templates for Spark. <span class="metric">2.4K+</span> stars, <span class="metric">400+</span> forks</p><div class="project-tech"><span>Spark</span><span>Python</span><span>NLP</span></div></div>
+          <div class="oss-card"><h3>kafka-ml-monitor</h3><p>Real-time ML model drift detection using Kafka streams. <span class="metric">1.8K+</span> stars</p><div class="project-tech"><span>Kafka</span><span>Prometheus</span><span>Python</span></div></div>
+          <div class="oss-card"><h3>terraform-aws-ml-infra</h3><p>Reusable Terraform modules for ML infrastructure on AWS. <span class="metric">900+</span> stars</p><div class="project-tech"><span>Terraform</span><span>AWS</span><span>HCL</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="toolbar" class="section section-alt">
+      <div class="container"><div class="section-header"><div class="section-tag">[ 07 ] Daily Drivers</div><h2 class="section-title">Tools & Environment</h2></div>
+        <div class="tools-scroll"><span class="tool-item">VS Code</span><span class="tool-item">iTerm2</span><span class="tool-item">Docker Desktop</span><span class="tool-item">Postman</span><span class="tool-item">Linear</span><span class="tool-item">Notion</span><span class="tool-item">Slack</span><span class="tool-item">Arc Browser</span><span class="tool-item">Raycast</span><span class="tool-item">DataDog</span><span class="tool-item">PagerDuty</span><span class="tool-item">LaunchDarkly</span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-section">
+        <h2 class="contact-title">Let's build something that stays up.</h2>
+        <p class="contact-text">Open to Principal / Staff-level AI platform and infrastructure roles. Reach out directly — no forms, no queue.</p>
+        <div class="contact-buttons">
+          <a href="mailto:david.clark67@outlook.com" class="btn btn-primary">david.clark67@outlook.com</a>
+          <a href="tel:+16505300517" class="btn">(650) 530-0517</a>
+          <a href="https://linkedin.com/in/david-clark-bab9053b9" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container"><span>&copy; 2026 David Clark</span><span>Rochester, MN &middot; Built for reliability, not just for show</span></div>
+    </footer>
+  </div>
+
+  <!-- ========== PROJECT 1 DETAIL PAGE ========== -->
+  <div id="project1" class="page">
+    <div class="project-detail">
+      <div class="container">
+        <div class="back-btn" onclick="showMainPage()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Portfolio
+        </div>
+        <div class="project-detail-header">
+          <div class="project-detail-tag">PROJECT_01</div>
+          <h2>Real-Time Event Intelligence Pipeline</h2>
+          <p class="project-subtitle">An end-to-end real-time system that ingests, classifies, and scores millions of global events for enterprise demand forecasting.</p>
+        </div>
+        <div class="project-detail-image">
+          <div class="placeholder-img">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 2v20M2 12h20"/></svg>
+            <span>Architecture Diagram Placeholder</span>
           </div>
         </div>
-        <div class="skill-card-new">
-          <div class="skill-card-header">
-            <div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-            <div class="skill-card-title">Languages</div>
+        <div class="project-detail-content">
+          <div class="project-detail-metrics">
+            <div class="project-detail-metric"><div class="metric-value">28%</div><div class="metric-label">Accuracy Improvement</div></div>
+            <div class="project-detail-metric"><div class="metric-value">10M+</div><div class="metric-label">Events Processed</div></div>
+            <div class="project-detail-metric"><div class="metric-value">99.9%</div><div class="metric-label">Uptime</div></div>
           </div>
-          <div class="skill-tags-new">
-            <span class="skill-pill">Python</span><span class="skill-pill">TypeScript</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Go</span><span class="skill-pill">Java</span>
+          <div class="project-detail-section">
+            <h3>Overview</h3>
+            <p>I built an end-to-end real-time event intelligence system that ingests, classifies, and scores millions of global events to power demand forecasting for enterprise clients. The pipeline consumes raw event streams from multiple data sources through Kafka, processes them with Spark Streaming for real-time enrichment including NLP-based classification, geospatial tagging, and temporal feature extraction then serves predictions through a low-latency FastAPI layer.</p>
           </div>
-        </div>
-        <div class="skill-card-new">
-          <div class="skill-card-header">
-            <div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-            <div class="skill-card-title">Data & Streaming</div>
+          <div class="project-detail-section">
+            <h3>Key Achievements</h3>
+            <ul>
+              <li>Trained XGBoost and PyTorch models achieving a <span class="metric">28%</span> lift in forecasting accuracy</li>
+              <li>Designed infrastructure on AWS ECS with Terraform</li>
+              <li>Set up automated CI/CD pipelines through GitHub Actions cutting deployment time by <span class="metric">50%</span></li>
+              <li>Built Prometheus and Grafana dashboards sustaining <span class="metric">99.9%</span> uptime</li>
+              <li>Hybrid batch-and-streaming architecture reduced infrastructure costs by <span class="metric">20%</span></li>
+            </ul>
           </div>
-          <div class="skill-tags-new">
-            <span class="skill-pill">Kafka</span><span class="skill-pill">Spark</span><span class="skill-pill">Airflow</span><span class="skill-pill">Distributed Data Pipelines</span>
-          </div>
-        </div>
-        <div class="skill-card-new">
-          <div class="skill-card-header">
-            <div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-            <div class="skill-card-title">Cloud & Infra</div>
-          </div>
-          <div class="skill-tags-new">
-            <span class="skill-pill">AWS (EC2, S3, Lambda, RDS, ECS)</span><span class="skill-pill">GCP</span><span class="skill-pill">Kubernetes</span><span class="skill-pill">Docker</span><span class="skill-pill">Terraform</span><span class="skill-pill">CI/CD</span>
-          </div>
-        </div>
-        <div class="skill-card-new">
-          <div class="skill-card-header">
-            <div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-            <div class="skill-card-title">Databases</div>
-          </div>
-          <div class="skill-tags-new">
-            <span class="skill-pill">Vector DBs</span><span class="skill-pill">PostgreSQL</span><span class="skill-pill">MongoDB</span><span class="skill-pill">Redis</span><span class="skill-pill">MySQL</span><span class="skill-pill">Elasticsearch</span>
-          </div>
-        </div>
-        <div class="skill-card-new">
-          <div class="skill-card-header">
-            <div class="skill-icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-            <div class="skill-card-title">Testing & Tools</div>
-          </div>
-          <div class="skill-tags-new">
-            <span class="skill-pill">PyTest</span><span class="skill-pill">Jest</span><span class="skill-pill">Mocha</span><span class="skill-pill">Cypress</span><span class="skill-pill">TDD</span><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">GitLab</span><span class="skill-pill">Jira</span><span class="skill-pill">Prometheus</span><span class="skill-pill">Grafana</span><span class="skill-pill">Nginx</span>
+          <div class="project-detail-section">
+            <h3>Technologies Used</h3>
+            <div class="project-detail-tech">
+              <span>Kafka</span><span>Spark Streaming</span><span>XGBoost</span><span>PyTorch</span><span>FastAPI</span><span>AWS ECS</span><span>Terraform</span><span>Prometheus</span><span>Grafana</span><span>GitHub Actions</span><span>NLP</span><span>Python</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section id="education" class="section">
-    <div class="container">
-      <div class="section-header"><div class="section-tag">[ 05 ] Education</div><h2 class="section-title">Academic Background</h2></div>
-      <div class="education-cards">
-        <div class="education-card"><div class="education-info"><h3>Master of Science, Computer Science</h3><div class="school">Stratford University</div></div><span class="education-date">Sep 2014 - Jun 2016</span></div>
-        <div class="education-card"><div class="education-info"><h3>Bachelor of Science, Computer Science</h3><div class="school">Stratford University</div></div><span class="education-date">Jan 2011 - Jun 2014</span></div>
+  <!-- ========== PROJECT 2 DETAIL PAGE ========== -->
+  <div id="project2" class="page">
+    <div class="project-detail">
+      <div class="container">
+        <div class="back-btn" onclick="showMainPage()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Portfolio
+        </div>
+        <div class="project-detail-header">
+          <div class="project-detail-tag">PROJECT_02</div>
+          <h2>RAG System with Automated Model Operations</h2>
+          <p class="project-subtitle">A production-grade Retrieval-Augmented Generation system designed for reliability, observability, and continuous improvement.</p>
+        </div>
+        <div class="project-detail-image">
+          <div class="placeholder-img">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10" r="2"/></svg>
+            <span>RAG Architecture Placeholder</span>
+          </div>
+        </div>
+        <div class="project-detail-content">
+          <div class="project-detail-metrics">
+            <div class="project-detail-metric"><div class="metric-value">30%</div><div class="metric-label">Faster Experimentation</div></div>
+            <div class="project-detail-metric"><div class="metric-value">2</div><div class="metric-label">Engineers Mentored</div></div>
+            <div class="project-detail-metric"><div class="metric-value">0</div><div class="metric-label">Production Incidents</div></div>
+          </div>
+          <div class="project-detail-section">
+            <h3>Overview</h3>
+            <p>I built a production-grade Retrieval-Augmented Generation system over a large domain-specific document corpus, designed from the ground up for reliability and observability. I implemented a chunking and embedding pipeline that processes documents into a vector database, selecting chunking strategies and embedding models through an A/B testing framework I wrote from scratch.</p>
+          </div>
+          <div class="project-detail-section">
+            <h3>Key Achievements</h3>
+            <ul>
+              <li>Built A/B testing framework accelerating experimentation cycles by <span class="metric">30%</span></li>
+              <li>Implemented automated drift detection triggering model retraining</li>
+              <li>Designed monitoring stack with Prometheus tracking retrieval precision and generation latency</li>
+              <li>Created CI/CD pipeline that gates deployments on evaluation benchmarks</li>
+              <li>Mentored <span class="metric">2</span> engineers through system design and testing strategies</li>
+            </ul>
+          </div>
+          <div class="project-detail-section">
+            <h3>Technologies Used</h3>
+            <div class="project-detail-tech">
+              <span>RAG</span><span>LLMs</span><span>Vector DB</span><span>FastAPI</span><span>Prometheus</span><span>CI/CD</span><span>A/B Testing</span><span>Python</span><span>Embeddings</span><span>Semantic Search</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section id="opensource" class="section section-alt">
-    <div class="container">
-      <div class="section-header"><div class="section-tag">[ 06 ] Open Source</div><h2 class="section-title">Open Source</h2></div>
-      <div class="oss-grid">
-        <div class="oss-card"><h3>spark-nlp-pipeline</h3><p>Production-ready NLP pipeline templates for Spark. <span class="metric">2.4K+</span> stars, <span class="metric">400+</span> forks</p><div class="project-tech"><span>Spark</span><span>Python</span><span>NLP</span></div></div>
-        <div class="oss-card"><h3>kafka-ml-monitor</h3><p>Real-time ML model drift detection using Kafka streams. <span class="metric">1.8K+</span> stars</p><div class="project-tech"><span>Kafka</span><span>Prometheus</span><span>Python</span></div></div>
-        <div class="oss-card"><h3>terraform-aws-ml-infra</h3><p>Reusable Terraform modules for ML infrastructure on AWS. <span class="metric">900+</span> stars</p><div class="project-tech"><span>Terraform</span><span>AWS</span><span>HCL</span></div></div>
+  <!-- ========== PROJECT 3 DETAIL PAGE ========== -->
+  <div id="project3" class="page">
+    <div class="project-detail">
+      <div class="container">
+        <div class="back-btn" onclick="showMainPage()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Portfolio
+        </div>
+        <div class="project-detail-header">
+          <div class="project-detail-tag">PROJECT_03</div>
+          <h2>Real-Time Feature Engineering Platform</h2>
+          <p class="project-subtitle">A platform computing temporal, aggregate, and cross-entity features from streaming event logs with sub-10ms latency.</p>
+        </div>
+        <div class="project-detail-image">
+          <div class="placeholder-img">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg>
+            <span>Feature Store Architecture Placeholder</span>
+          </div>
+        </div>
+        <div class="project-detail-content">
+          <div class="project-detail-metrics">
+            <div class="project-detail-metric"><div class="metric-value">-35%</div><div class="metric-label">Latency Reduction</div></div>
+            <div class="project-detail-metric"><div class="metric-value">+18%</div><div class="metric-label">Feature Quality</div></div>
+            <div class="project-detail-metric"><div class="metric-value">8+</div><div class="metric-label">Services Tested</div></div>
+          </div>
+          <div class="project-detail-section">
+            <h3>Overview</h3>
+            <p>I built a real-time feature engineering platform that computes temporal, aggregate, and cross-entity features from raw streaming event logs and serves them to ML models with sub-10ms latency. The platform uses Kafka Streams for windowed aggregations combined with Airflow DAGs for offline feature backfills.</p>
+          </div>
+          <div class="project-detail-section">
+            <h3>Key Achievements</h3>
+            <ul>
+              <li>Reduced data latency by <span class="metric">35%</span> compared to previous batch-only approach</li>
+              <li>Improved feature quality metrics by <span class="metric">18%</span> through richer signal capture</li>
+              <li>Designed Redis-backed online feature store decoupling computation from serving</li>
+              <li>Packaged platform with Docker and Terraform, deployed on Kubernetes</li>
+              <li>Wrote integration tests across <span class="metric">8+</span> services using PyTest</li>
+            </ul>
+          </div>
+          <div class="project-detail-section">
+            <h3>Technologies Used</h3>
+            <div class="project-detail-tech">
+              <span>Kafka Streams</span><span>Redis</span><span>Airflow</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>PyTest</span><span>Python</span><span>Feature Store</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <section id="toolbar" class="section">
-    <div class="container">
-      <div class="section-header"><div class="section-tag">[ 07 ] Daily Drivers</div><h2 class="section-title">Tools & Environment</h2></div>
-      <div class="tools-scroll">
-        <span class="tool-item">VS Code</span><span class="tool-item">iTerm2</span><span class="tool-item">Docker Desktop</span><span class="tool-item">Postman</span><span class="tool-item">Linear</span><span class="tool-item">Notion</span><span class="tool-item">Slack</span><span class="tool-item">Arc Browser</span><span class="tool-item">Raycast</span><span class="tool-item">DataDog</span><span class="tool-item">PagerDuty</span><span class="tool-item">LaunchDarkly</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section section-alt">
-    <div class="container contact-section">
-      <h2 class="contact-title">Let's build something that stays up.</h2>
-      <p class="contact-text">Open to Principal / Staff-level AI platform and infrastructure roles. Reach out directly — no forms, no queue.</p>
-      <div class="contact-buttons">
-        <a href="mailto:david.clark67@outlook.com" class="btn btn-primary">david.clark67@outlook.com</a>
-        <a href="tel:+16505300517" class="btn">(650) 530-0517</a>
-        <a href="https://linkedin.com/in/david-clark-bab9053b9" target="_blank" rel="noopener" class="btn">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container"><span>&copy; 2026 David Clark</span><span>Rochester, MN &middot; Built for reliability, not just for show</span></div>
-  </footer>
+  </div>
 
   <script>
+    // Page navigation
+    function showProject(projectId) {
+      document.getElementById('mainPage').classList.remove('active');
+      document.getElementById(projectId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+    function showMainPage() {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('mainPage').classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
     // Circuit Board Background
     const canvas = document.getElementById('circuit-layer');
     const ctx = canvas.getContext('2d');
@@ -738,11 +691,6 @@
       });
     });
 
-    // Collapsible project cards
-    document.querySelectorAll('.project-header').forEach(header => {
-      header.addEventListener('click', () => { header.parentElement.classList.toggle('open'); });
-    });
-
     // AI Chatbot
     const aiChatBtn = document.getElementById('aiChatBtn'), aiChatPanel = document.getElementById('aiChatPanel'), aiChatClose = document.getElementById('aiChatClose'), aiChatMessages = document.getElementById('aiChatMessages'), aiChatInput = document.getElementById('aiChatInput'), aiChatSend = document.getElementById('aiChatSend');
     const portfolioData = {
@@ -750,7 +698,7 @@
       summary: "Ten years building production-grade AI systems and scalable full-stack platforms.",
       keyMetrics: { accuracy: "+28% prediction accuracy at PredictHQ", latency: "-35% data latency reduction", users: "100K+ daily users served" },
       currentRole: { title: "Principal AI Platform Engineer", company: "PredictHQ", dates: "Sep 2022 – Present" },
-      projects: [{ name: "Real-Time Event Intelligence Pipeline", description: "Kafka, Spark, XGBoost, PyTorch, FastAPI, AWS ECS. 28% accuracy lift." }, { name: "RAG System", description: "Vector DB, LLM streaming, drift detection. 30% faster experimentation." }, { name: "Feature Engineering Platform", description: "Kafka Streams, Redis, Airflow. 35% latency reduction." }],
+      projects: [{ name: "Event Intelligence Pipeline", description: "Kafka, Spark, XGBoost, PyTorch, FastAPI. 28% accuracy lift." }, { name: "RAG System", description: "Vector DB, LLM streaming, drift detection. 30% faster experimentation." }, { name: "Feature Engineering Platform", description: "Kafka Streams, Redis, Airflow. 35% latency reduction." }],
       skills: ["AI/ML: RAG, LLMs, PyTorch, TensorFlow, NLP", "Languages: Python, TypeScript, JavaScript, Go, Java", "Data: Kafka, Spark, Airflow", "Cloud: AWS, GCP, Kubernetes, Docker, Terraform"],
       education: ["MS Computer Science – Stratford University", "BS Computer Science – Stratford University"]
     };
@@ -776,7 +724,9 @@
     document.addEventListener('click', (e) => { if (!e.target.closest('.ai-chat-wrapper')) aiChatPanel.classList.remove('open'); });
 
     const scrollIndicator = document.querySelector('.scroll-indicator');
-    window.addEventListener('scroll', () => { scrollIndicator.style.opacity = window.scrollY > 100 ? '0' : '1'; scrollIndicator.style.transition = 'opacity 0.3s ease'; });
+    if (scrollIndicator) {
+      window.addEventListener('scroll', () => { scrollIndicator.style.opacity = window.scrollY > 100 ? '0' : '1'; scrollIndicator.style.transition = 'opacity 0.3s ease'; });
+    }
 
     function animateCount(el) { const t = parseInt(el.dataset.target), s = el.dataset.suffix || '', p = el.dataset.prefix || '', st = performance.now(); function u(ct) { const pr = Math.min((ct - st) / 2000, 1), c = Math.floor(t * (1 - Math.pow(1 - pr, 3))); el.textContent = p + c + s; if (pr < 1) requestAnimationFrame(u); } requestAnimationFrame(u); }
     const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.stat-number').forEach(n => animateCount(n)); observer.unobserve(e.target); } }); }, { threshold: 0.5 });
