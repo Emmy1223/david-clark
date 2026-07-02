@@ -173,6 +173,17 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 12px var(--accent), 0 0 24px var(--accent-glow); }
+    50% { opacity: 0.4; box-shadow: 0 0 4px var(--accent), 0 0 8px var(--accent-glow); }
+  }
+
+  /* ---------- Hero ---------- */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -196,12 +207,12 @@
     border: 1px solid var(--glass-border);
     padding: 8px 20px;
     border-radius: 50px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     letter-spacing: 0.08em;
     font-family: var(--heading);
     text-transform: uppercase;
     opacity: 0;
-    animation: fadeUp 0.8s 0.6s ease forwards;
+    animation: fadeUp 0.8s 0.4s ease forwards;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
   .hero-badge .dot {
@@ -212,39 +223,35 @@
     box-shadow: 0 0 12px var(--accent), 0 0 24px var(--accent-glow);
     animation: pulse 2s infinite;
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 12px var(--accent), 0 0 24px var(--accent-glow); }
-    50% { opacity: 0.4; box-shadow: 0 0 4px var(--accent), 0 0 8px var(--accent-glow); }
+  .hero-job-title {
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s ease forwards;
+    text-shadow: 0 0 12px var(--accent-glow);
   }
   .hero h1 {
     font-family: var(--heading);
     font-weight: 700;
-    font-size: clamp(38px, 6vw, 64px);
-    line-height: 1;
-    letter-spacing: 0.03em;
+    font-size: clamp(44px, 7vw, 72px);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
     color: var(--ink);
-    text-shadow: 0 0 40px var(--accent-glow);
-    text-transform: uppercase;
-    white-space: nowrap;
-    margin-bottom: 16px;
-    position: relative;
-    display: block;
-    overflow: hidden;
-    min-height: 1.2em;
-  }
-  .hero h1 .char {
-    display: inline-block;
-    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+    text-shadow: 0 0 30px var(--accent-glow);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s ease forwards;
+    text-transform: capitalize;
   }
   .hero-subtitle {
-    margin-top: 20px;
-    font-size: 18px;
+    font-size: 17px;
     color: var(--ink-secondary);
-    max-width: 50ch;
+    max-width: 46ch;
     line-height: 1.6;
     margin-left: auto;
     margin-right: auto;
@@ -252,9 +259,12 @@
     animation: fadeUp 0.8s 1s ease forwards;
     font-weight: 300;
   }
-  .hero-subtitle strong { color: var(--ink); font-weight: 600; }
+  .hero-subtitle strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
   .hero-meta {
-    margin-top: 44px;
+    margin-top: 40px;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -704,7 +714,6 @@
     border: 1px solid rgba(0, 255, 65, 0.15);
   }
 
-  /* Open Source */
   .oss-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -879,7 +888,6 @@
     50% { opacity: 0; }
   }
 
-  /* Daily Drivers */
   .tools-scroll {
     display: flex;
     flex-wrap: wrap;
@@ -903,6 +911,81 @@
     border-color: var(--accent);
     color: var(--accent);
     box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  /* ---------- Resume Download ---------- */
+  .resume-section {
+    text-align: center;
+    padding: 60px 0;
+  }
+  .resume-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all var(--transition);
+  }
+  .resume-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 24px var(--accent-glow);
+  }
+  .resume-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+    filter: drop-shadow(0 0 12px var(--accent-glow));
+  }
+  .resume-card h3 {
+    font-family: var(--heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .resume-card p {
+    font-size: 14px;
+    color: var(--ink-secondary);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+  .btn-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 50px;
+    background: var(--accent);
+    border: 2px solid var(--accent);
+    color: #000;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+  .btn-resume:hover {
+    background: transparent;
+    color: var(--accent);
+    box-shadow: 0 0 32px var(--accent-glow), 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  .btn-resume svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+  .btn-resume:hover svg {
+    transform: translateY(2px);
   }
 
   /* ---------- AI Chatbot ---------- */
@@ -1198,8 +1281,9 @@
       <div class="hero-badge">
         <span class="dot"></span> System Online
       </div>
-      <h1 id="heroName">David Clark</h1>
-      <p class="hero-subtitle">Principal AI Platform Engineer - I build <strong>real-time data pipelines</strong> and <strong>production ML systems</strong> that hold up at scale.</p>
+      <div class="hero-job-title">Principal AI Platform Engineer</div>
+      <h1>David Clark</h1>
+      <p class="hero-subtitle">I build <strong>real-time data pipelines</strong> and <strong>production ML systems</strong> that hold up at scale.</p>
       <div class="hero-meta">
         <span class="hero-meta-item">Rochester, MN</span>
         <span class="hero-meta-divider">|</span>
@@ -1490,8 +1574,30 @@
       </div>
     </div>
   </section>
+
+  <section id="resume" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">[ 08 ] Resume</div>
+        <h2 class="section-title">Download Resume</h2>
+      </div>
+      <div class="resume-card">
+        <span class="resume-icon">📄</span>
+        <h3>David Clark — Resume</h3>
+        <p>Principal AI Platform Engineer<br>10 years of experience in production AI systems</p>
+        <a href="David_Clark_Resume.pdf" class="btn-resume" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Resume (PDF)
+        </a>
+      </div>
+    </div>
+  </section>
   
-  <section id="contact" class="section">
+  <section id="contact" class="section section-alt">
     <div class="container contact-section">
       <h2 class="contact-title">Let's build something that stays up.</h2>
       <p class="contact-text">Open to Principal / Staff-level AI platform and infrastructure roles. Reach out directly — no forms, no queue.</p>
@@ -1544,7 +1650,6 @@
         });
       }
       
-      // Create connections between nearby nodes
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
@@ -1562,7 +1667,6 @@
     function drawCircuit() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Update node positions
       nodes.forEach(node => {
         node.x += node.vx;
         node.y += node.vy;
@@ -1574,7 +1678,6 @@
         if (node.y > canvas.height) node.y = 0;
       });
       
-      // Draw connections
       connections.forEach(conn => {
         const from = nodes[conn.from];
         const to = nodes[conn.to];
@@ -1587,11 +1690,9 @@
         ctx.stroke();
       });
       
-      // Draw nodes
       nodes.forEach(node => {
         const pulseAlpha = 0.4 + Math.sin(node.pulse) * 0.3;
         
-        // Glow
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.size * 3);
         gradient.addColorStop(0, `rgba(0, 255, 65, ${pulseAlpha})`);
         gradient.addColorStop(1, 'rgba(0, 255, 65, 0)');
@@ -1600,7 +1701,6 @@
         ctx.arc(node.x, node.y, node.size * 3, 0, Math.PI * 2);
         ctx.fill();
         
-        // Core
         ctx.fillStyle = `rgba(0, 255, 65, ${pulseAlpha + 0.2})`;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
@@ -1714,64 +1814,6 @@
     aiChatSend.addEventListener('click', handleSend);
     aiChatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
     document.addEventListener('click', (e) => { if (!e.target.closest('.ai-chat-wrapper')) aiChatPanel.classList.remove('open'); });
-
-    // Hero name animation
-    const heroName = document.getElementById('heroName');
-    const nameText = heroName.textContent.trim();
-    heroName.textContent = '';
-    const chars = [];
-    [...nameText].forEach((char) => {
-      const span = document.createElement('span');
-      span.className = 'char';
-      span.textContent = char;
-      span.style.color = '#E8E8E8';
-      span.style.textShadow = '0 0 20px rgba(0, 255, 65, 0.3)';
-      heroName.appendChild(span);
-      chars.push(span);
-    });
-    
-    const colorStates = [
-      { color: '#E8E8E8', shadow: '0 0 20px rgba(0, 255, 65, 0.3)' },
-      { color: '#00FF41', shadow: '0 0 30px rgba(0, 255, 65, 0.8), 0 0 60px rgba(0, 255, 65, 0.4)' },
-      { color: '#0A0A0A', shadow: '0 0 10px rgba(0, 255, 65, 0.5)' },
-    ];
-    
-    let stateIndex = 0;
-    let isAnimating = false;
-    
-    function swipeAnimation() {
-      if (isAnimating) return;
-      isAnimating = true;
-      const nextState = colorStates[stateIndex];
-      chars.forEach((char, i) => {
-        setTimeout(() => {
-          char.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, color 0.4s ease, text-shadow 0.4s ease';
-          char.style.transform = 'translateX(40px)';
-          char.style.opacity = '0';
-          setTimeout(() => {
-            char.style.transition = 'transform 0s, opacity 0s, color 0s, text-shadow 0s';
-            char.style.transform = 'translateX(-40px)';
-            char.style.color = nextState.color;
-            char.style.textShadow = nextState.shadow;
-            char.offsetHeight;
-            char.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, color 0.4s ease, text-shadow 0.4s ease';
-            char.style.transform = 'translateX(0)';
-            char.style.opacity = '1';
-          }, 200);
-        }, i * 30);
-      });
-      setTimeout(() => { stateIndex = (stateIndex + 1) % colorStates.length; isAnimating = false; }, chars.length * 30 + 600);
-    }
-    
-    setTimeout(() => {
-      chars.forEach((char, i) => {
-        char.style.transform = 'translateX(60px)';
-        char.style.opacity = '0';
-        char.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease';
-        setTimeout(() => { char.style.transform = 'translateX(0)'; char.style.opacity = '1'; }, 200 + i * 35);
-      });
-      setTimeout(() => { setInterval(swipeAnimation, 4000); swipeAnimation(); }, 200 + chars.length * 35 + 800);
-    }, 300);
 
     // Scroll indicator
     const scrollIndicator = document.querySelector('.scroll-indicator');
