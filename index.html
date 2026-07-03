@@ -3796,30 +3796,8 @@
               submitLoader.style.display = state ? "inline" : "none";
             }
 
-            contactForm.onsubmit = async (e) => {
-        e.preventDefault();
-
-        const formData = {
-          name: e.target.name.value,
-          email: e.target.email.value,
-          message: e.target.message.value,
-        };
-
-        try {
-          const response = await fetch("YOUR_WEB_APP_URL", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-          });
-
-          const result = await response.json();
-          alert("Message saved to Google Drive!");
-        } catch (err) {
-          console.error("Form error:", err);
-          alert("Failed to save message.");
-        }
-      };
-
+            contactForm.onsubmit = function (e) {
+              e.preventDefault();
 
               var formData = {
                 name: formName.value.trim(),
