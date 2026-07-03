@@ -3649,8 +3649,7 @@
 
     <script>
          // Contact Form with Google Drive logging
-      const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzCugSpZ1jj0A8x7Q4UansKwc-3sspr8PUZO8Q0ANGXuEkeRGIBQtIP4Vie0usGxf2oCA/exec";
-
+      const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyULG9x-Kd25AlqDTwOalsOyyD-SQJpzsli0yQScOewgz95LM2wJfxW8w-3lCP95ZJaNA/exec";
       var contactForm = document.getElementById("contactForm");
       var successMsg = document.getElementById("contactSuccess");
       var errorMsg = document.getElementById("contactError");
@@ -3740,7 +3739,7 @@
       formSubject.addEventListener("input", function() { showError(formSubject, false); });
       formMessage.addEventListener("input", function() { showError(formMessage, false); });
 
-      
+
       aiChatBtn.addEventListener("click", () => {
         aiChatPanel.classList.toggle("open");
         if (aiChatPanel.classList.contains("open")) aiChatInput.focus();
