@@ -3762,7 +3762,9 @@
         });
       });
 
-      // Contact Form with Google Drive logging
+            // Contact Form with Google Drive logging
+      const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxId1h1ra0AJJNKoicIQWu0qprO5TX8bxL9qeVlJ6E5FmtRNNv-upFuUO2qstqvXZQ8DQ/exec";
+
       const contactForm = document.getElementById("contactForm"),
         successMsg = document.getElementById("contactSuccess"),
         errorMsg = document.getElementById("contactError"),
@@ -3773,6 +3775,7 @@
         formEmail = document.getElementById("formEmail"),
         formSubject = document.getElementById("formSubject"),
         formMessage = document.getElementById("formMessage");
+      
       function showError(i, s) {
         s ? i.classList.add("error") : i.classList.remove("error");
       }
@@ -3784,62 +3787,60 @@
         submitText.style.display = state ? "none" : "inline";
         submitLoader.style.display = state ? "inline" : "none";
       }
+      
       contactForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         let v = true;
-        if (!formName.value.trim()) {
-          showError(formName, true);
-          v = false;
-        } else showError(formName, false);
-        if (!formEmail.value.trim() || !validateEmail(formEmail.value.trim())) {
-          showError(formEmail, true);
-          v = false;
-        } else showError(formEmail, false);
-        if (!formSubject.value.trim()) {
-          showError(formSubject, true);
-          v = false;
-        } else showError(formSubject, false);
-        if (!formMessage.value.trim()) {
-          showError(formMessage, true);
-          v = false;
-        } else showError(formMessage, false);
+        if (!formName.value.trim()) { showError(formName, true); v = false; } else showError(formName, false);
+        if (!formEmail.value.trim() || !validateEmail(formEmail.value.trim())) { showError(formEmail, true); v = false; } else showError(formEmail, false);
+        if (!formSubject.value.trim()) { showError(formSubject, true); v = false; } else showError(formSubject, false);
+        if (!formMessage.value.trim()) { showError(formMessage, true); v = false; } else showError(formMessage, false);
         if (!v) return;
+
         const formData = {
           name: formName.value.trim(),
           email: formEmail.value.trim(),
           subject: formSubject.value.trim(),
           message: formMessage.value.trim(),
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toISOString()
         };
-        if (FORM_ENDPOINT === "https://script.google.com/macros/s/AKfycbxDOjsaz48U8M02AFIwx1ggAGduoI3OwI_k0M_e9o41pIlWkvqqNKMPJxNr1BSzaZCNsA/exec") {
-          console.log("Form data (no endpoint configured):", formData);
-          successMsg.classList.add("show");
-          contactForm.reset();
-          setTimeout(() => successMsg.classList.remove("show"), 4000);
-          return;
-        }
+
         setLoading(true);
         successMsg.classList.remove("show");
         errorMsg.classList.remove("show");
+
         try {
           const res = await fetch(FORM_ENDPOINT, {
             method: "POST",
-            mode: "no-cors",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(formData)
           });
-          successMsg.classList.add("show");
-          contactForm.reset();
-          setTimeout(() => successMsg.classList.remove("show"), 4000);
+          
+          if (res.ok) {
+            const responseData = await res.json();
+            if (responseData.status === "success") {
+              successMsg.classList.add("show");
+              contactForm.reset();
+              setTimeout(() => successMsg.classList.remove("show"), 4000);
+            } else {
+              errorMsg.classList.add("show");
+              setTimeout(() => errorMsg.classList.remove("show"), 5000);
+            }
+          } else {
+            errorMsg.classList.add("show");
+            setTimeout(() => errorMsg.classList.remove("show"), 5000);
+          }
         } catch (err) {
+          console.error("Form submission error:", err);
           errorMsg.classList.add("show");
           setTimeout(() => errorMsg.classList.remove("show"), 5000);
         } finally {
           setLoading(false);
         }
       });
+
       [formName, formEmail, formSubject, formMessage].forEach((i) =>
-        i.addEventListener("input", () => showError(i, false)),
+        i.addEventListener("input", () => showError(i, false))
       );
 
       const aiChatBtn = document.getElementById("aiChatBtn"),
