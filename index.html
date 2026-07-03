@@ -228,7 +228,7 @@
   .contact-error-msg-global.show { display: block; }
 
   /* Floating Resume Button (Polished) */
-  .floating-resume { position: fixed; bottom: 28px; right: 28px; z-index: 150; display: inline-flex; align-items: center; gap: 10px; font-family: var(--heading); font-size: 13px; font-weight: 700; padding: 14px 24px; border-radius: 50px; background: var(--accent); border: 2px solid var(--accent); color: #000; cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 0 24px var(--accent-glow), 0 8px 24px rgba(0,0,0,0.5); animation: floatResume 3s ease-in-out infinite; }
+  .floating-resume { position: fixed; bottom: 28px; left: 28px; z-index: 150; display: inline-flex; align-items: center; gap: 10px; font-family: var(--heading); font-size: 13px; font-weight: 700; padding: 14px 24px; border-radius: 50px; background: var(--accent); border: 2px solid var(--accent); color: #000; cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 0 24px var(--accent-glow), 0 8px 24px rgba(0,0,0,0.5); animation: floatResume 3s ease-in-out infinite; }
   @keyframes floatResume { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
   .floating-resume:hover { transform: scale(1.06) translateY(-2px); box-shadow: 0 0 40px var(--accent), 0 12px 32px rgba(0,0,0,0.6); animation: none; }
   .floating-resume svg { width: 16px; height: 16px; stroke: #000; transition: transform 0.3s ease; }
@@ -322,6 +322,169 @@
   @media (max-width: 480px) {
     .navbar-nav a:nth-child(4) { display:none; } .hero h1 { font-size:28px; } .section-title { font-size:24px; }
     .ai-chat-panel { width:calc(100vw - 40px); right:-8px; bottom:68px; } .ai-chat-wrapper { bottom:16px; right:16px; }
+  }
+    /* ========== REDESIGNED EDUCATION SECTION ========== */
+  .edu-master-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+  .edu-master-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 24px var(--accent-glow);
+  }
+
+  /* Top Section */
+  .edu-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 32px 36px 28px;
+    gap: 20px;
+  }
+  .edu-card-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    flex: 1;
+    min-width: 0;
+  }
+  .edu-card-icon-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--skill-icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+  .edu-card-icon-badge svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--accent);
+  }
+  .edu-card-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .edu-card-label {
+    font-family: var(--heading);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .edu-card-degree {
+    font-family: var(--heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  .edu-card-school {
+    font-size: 14px;
+    color: var(--ink-secondary);
+    font-weight: 400;
+    margin: 0;
+  }
+  .edu-status-badge {
+    font-family: var(--heading);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 16px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(0,255,65,0.15);
+    border-radius: 50px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Divider */
+  .edu-card-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 36px;
+    opacity: 0.6;
+  }
+
+  /* Bottom Two-Column Section */
+  .edu-card-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 28px 36px 36px;
+  }
+  .edu-card-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .edu-col-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .edu-col-heading svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--accent);
+    flex-shrink: 0;
+  }
+  .edu-col-heading h4 {
+    font-family: var(--heading);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .edu-card-col p {
+    font-size: 14px;
+    color: var(--ink-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .edu-card-top {
+      flex-direction: column;
+      padding: 24px 24px 20px;
+    }
+    .edu-card-header-left {
+      gap: 14px;
+    }
+    .edu-card-degree {
+      font-size: 18px;
+    }
+    .edu-status-badge {
+      align-self: flex-start;
+    }
+    .edu-card-divider {
+      margin: 0 24px;
+    }
+    .edu-card-bottom {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 20px 24px 28px;
+    }
   }
 </style>
 </head>
@@ -421,15 +584,103 @@
       </div>
     </section>
 
-    <section id="education" class="section section-alt">
-      <div class="container"><div class="section-header"><div class="section-tag">[ 05 ] Education</div><h2 class="section-title">Academic Background</h2></div>
-        <div class="education-cards">
-          <div class="education-card"><div class="education-info"><h3>Master of Science, Computer Science</h3><div class="school">Stratford University</div></div><span class="education-date">Sep 2014 - Jun 2016</span></div>
-          <div class="education-card"><div class="education-info"><h3>Bachelor of Science, Computer Science</h3><div class="school">Stratford University</div></div><span class="education-date">Jan 2011 - Jun 2014</span></div>
+        <section id="education" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">[ 05 ] Education</div>
+          <h2 class="section-title">Academic Background</h2>
         </div>
+
+        <div class="edu-master-card">
+          <!-- Top Header Section -->
+          <div class="edu-card-top">
+            <div class="edu-card-header-left">
+              <div class="edu-card-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/>
+                </svg>
+              </div>
+              <div class="edu-card-title-group">
+                <span class="edu-card-label">Education</span>
+                <h3 class="edu-card-degree">Master of Science, Computer Science</h3>
+                <p class="edu-card-school">Stratford University</p>
+              </div>
+            </div>
+            <div class="edu-status-badge">Graduated</div>
+          </div>
+
+          <!-- Divider -->
+          <div class="edu-card-divider"></div>
+
+          <!-- Bottom Two-Column Section -->
+          <div class="edu-card-bottom">
+            <div class="edu-card-col">
+              <div class="edu-col-heading">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <h4>Program Overview</h4>
+              </div>
+              <p>Completed coursework in advanced algorithms, distributed systems, machine learning, and artificial intelligence. Graduated with honors while working part-time as a research assistant in the computer vision lab.</p>
+            </div>
+            <div class="edu-card-col">
+              <div class="edu-col-heading">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                <h4>Key Highlights</h4>
+              </div>
+              <p>Published research on neural network optimization techniques. Led a team project building a real-time recommendation engine that won best project award. Maintained a 3.8 GPA throughout the program.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Education Card -->
+        <div class="edu-master-card" style="margin-top: 24px;">
+          <div class="edu-card-top">
+            <div class="edu-card-header-left">
+              <div class="edu-card-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/>
+                </svg>
+              </div>
+              <div class="edu-card-title-group">
+                <span class="edu-card-label">Education</span>
+                <h3 class="edu-card-degree">Bachelor of Science, Computer Science</h3>
+                <p class="edu-card-school">Stratford University</p>
+              </div>
+            </div>
+            <div class="edu-status-badge">Graduated</div>
+          </div>
+          <div class="edu-card-divider"></div>
+          <div class="edu-card-bottom">
+            <div class="edu-card-col">
+              <div class="edu-col-heading">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <h4>Program Overview</h4>
+              </div>
+              <p>Built a strong foundation in computer science fundamentals including data structures, algorithms, operating systems, database design, and software engineering principles. Dean's list for 6 consecutive semesters.</p>
+            </div>
+            <div class="edu-card-col">
+              <div class="edu-col-heading">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                <h4>Key Highlights</h4>
+              </div>
+              <p>Developed full-stack web applications as capstone projects. Participated in hackathons and coding competitions. Active member of the university's ACM chapter and organized tech workshops for underclassmen.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
-
     <section id="opensource" class="section">
       <div class="container"><div class="section-header"><div class="section-tag">[ 06 ] Open Source</div><h2 class="section-title">Open Source</h2></div>
         <div class="oss-grid">
