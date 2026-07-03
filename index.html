@@ -34,6 +34,8 @@
     --heading: 'Rajdhani', sans-serif;
     --body: 'Space Grotesk', sans-serif;
     --skill-icon-bg: rgba(0, 255, 65, 0.12);
+    --input-glass-bg: rgba(13, 13, 32, 0.5);
+    --input-glass-border: rgba(0, 255, 65, 0.15);
   }
 
   [data-theme="light"] {
@@ -54,6 +56,8 @@
     --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     --glass-blur: blur(16px);
     --skill-icon-bg: rgba(0, 170, 51, 0.1);
+    --input-glass-bg: rgba(255, 255, 255, 0.7);
+    --input-glass-border: rgba(0, 170, 51, 0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -87,7 +91,6 @@
     box-shadow: var(--glass-shadow); transition: all var(--transition);
   }
   .navbar .container { display: flex; align-items: center; justify-content: center; gap: 6px; height: auto; padding: 0; flex-wrap: wrap; }
-  .navbar-brand { font-family: var(--tech); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; color: var(--accent); text-shadow: 0 0 12px var(--accent-glow); padding: 8px 16px; border-right: 1px solid var(--glass-border); margin-right: 4px; opacity: 0; animation: fadeSlideDown 0.8s 1.8s ease forwards; }
   .navbar-nav { display: flex; align-items: center; gap: 4px; }
   .navbar-nav a {
     font-size: 12px; font-weight: 500; color: var(--ink-secondary); transition: all var(--transition);
@@ -117,7 +120,6 @@
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes pulse { 0%,100% { opacity:1; box-shadow:0 0 12px var(--accent),0 0 24px var(--accent-glow); } 50% { opacity:0.4; box-shadow:0 0 4px var(--accent),0 0 8px var(--accent-glow); } }
 
-  /* Main Page / Project Detail Page Toggle */
   .page { display: none; }
   .page.active { display: block; }
 
@@ -152,7 +154,6 @@
   .stat-number { font-family:var(--heading); font-weight:700; font-size:42px; color:var(--accent); margin-bottom:8px; text-shadow:0 0 20px var(--accent-glow); letter-spacing:0.02em; }
   .stat-label { font-size:13px; color:var(--muted); line-height:1.4; font-weight:400; letter-spacing:0.02em; }
 
-  /* Experience */
   .timeline-wrapper { max-width: 760px; margin: 0 auto; }
   .timeline-entry { position: relative; padding-left: 48px; margin-bottom: 24px; }
   .timeline-entry:last-child { margin-bottom: 0; }
@@ -183,7 +184,6 @@
   .exp-card-body li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); }
   .exp-card-body li .metric { font-family: var(--tech); font-weight: 700; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
 
-  /* Projects */
   .projects-grid { display: grid; gap: 20px; max-width: 900px; margin: 0 auto; }
   .project-card { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); transition: all var(--transition); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer; }
   .project-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 24px var(--accent-glow); }
@@ -195,7 +195,6 @@
   .project-card:hover .project-arrow { background: rgba(0,255,65,0.12); }
   .project-arrow svg { width: 14px; height: 14px; stroke: var(--accent); }
 
-  /* Skills */
   .skills-grid-new { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
   .skill-card-new { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 28px; transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .skill-card-new:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 16px var(--accent-glow); }
@@ -223,14 +222,95 @@
   .oss-card .project-tech { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .oss-card .project-tech span { font-family: var(--heading); font-size: 10px; padding: 5px 14px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(0,255,65,0.2); border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
 
-  .contact-section { text-align: center; padding: 80px 0; }
-  .contact-title { font-size: clamp(28px, 5vw, 38px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 14px; font-family: var(--heading); text-transform: uppercase; }
-  .contact-text { font-size: 16px; color: var(--ink-secondary); margin-bottom: 40px; font-weight: 300; }
-  .contact-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading); font-size: 13px; font-weight: 600; padding: 14px 28px; border-radius: 50px; border: 1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); color: var(--ink); cursor: pointer; transition: all var(--transition); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-  .btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow); }
-  .btn-primary { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }
-  .btn-primary:hover { background: var(--accent-dark); color: #000; }
+  /* ========== UPDATED CONTACT SECTION WITH GLASS INPUT BARS ========== */
+  .contact-card {
+    max-width: 900px; margin: 0 auto;
+    background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow); padding: 48px 40px; position: relative; overflow: hidden;
+  }
+  .contact-card::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 2px; background: var(--accent); opacity: 0.6;
+    box-shadow: 0 0 16px var(--accent-glow), 0 0 32px var(--accent-glow);
+    border-radius: 1px;
+  }
+  .contact-card-label {
+    text-align: center; font-family: var(--tech); font-size: 10px; font-weight: 600;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px;
+  }
+  .contact-card h2 {
+    text-align: center; font-family: var(--heading); font-size: 30px; font-weight: 700;
+    letter-spacing: 0.03em; color: var(--ink); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .contact-card-underline {
+    width: 50px; height: 2px; background: var(--accent); margin: 0 auto 40px;
+    box-shadow: 0 0 8px var(--accent-glow); border-radius: 1px;
+  }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-info-col { display: flex; flex-direction: column; gap: 8px; }
+  .contact-info-col .intro-text { font-size: 14px; color: var(--ink-secondary); line-height: 1.7; margin-bottom: 16px; font-weight: 300; }
+  .contact-info-row { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; }
+  .contact-info-icon {
+    width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--skill-icon-bg);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent);
+  }
+  .contact-info-icon svg { width: 18px; height: 18px; stroke: var(--accent); }
+  .contact-info-text { display: flex; flex-direction: column; gap: 2px; }
+  .contact-info-text .contact-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; font-family: var(--heading); }
+  .contact-info-text .contact-value { font-size: 14px; color: var(--ink); font-weight: 600; word-break: break-all; }
+  .contact-info-text .contact-value a { color: var(--accent); transition: all var(--transition); }
+  .contact-info-text .contact-value a:hover { text-shadow: 0 0 8px var(--accent-glow); }
+
+  .contact-form-col { display: flex; flex-direction: column; gap: 16px; }
+  .contact-input-group { position: relative; }
+  .contact-input-group input,
+  .contact-input-group textarea {
+    width: 100%; padding: 14px 18px;
+    background: var(--input-glass-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--input-glass-border); border-radius: var(--radius);
+    color: var(--ink); font-family: var(--body); font-size: 14px;
+    outline: none; transition: all var(--transition); resize: vertical;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  [data-theme="light"] .contact-input-group input,
+  [data-theme="light"] .contact-input-group textarea {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .contact-input-group input:focus,
+  .contact-input-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow), 0 2px 12px rgba(0,0,0,0.3);
+    background: var(--input-glass-bg);
+  }
+  .contact-input-group input::placeholder,
+  .contact-input-group textarea::placeholder { color: var(--muted); }
+  .contact-input-group input.error,
+  .contact-input-group textarea.error {
+    border-color: #ff4444;
+    box-shadow: 0 0 12px rgba(255,68,68,0.3);
+  }
+  .contact-error-msg { font-size: 10px; color: #ff4444; margin-top: 4px; display: none; font-family: var(--heading); text-transform: uppercase; letter-spacing: 0.04em; }
+  .contact-input-group input.error + .contact-error-msg,
+  .contact-input-group textarea.error + .contact-error-msg { display: block; }
+  .contact-submit-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 14px 28px; border-radius: var(--radius);
+    background: var(--accent); border: 2px solid var(--accent); color: #000;
+    font-family: var(--heading); font-size: 14px; font-weight: 700; cursor: pointer;
+    transition: all var(--transition); text-transform: uppercase; letter-spacing: 0.06em;
+    box-shadow: 0 0 16px var(--accent-glow);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .contact-submit-btn:hover { background: transparent; color: var(--accent); box-shadow: 0 0 24px var(--accent-glow); }
+  .contact-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .contact-submit-btn svg { width: 16px; height: 16px; stroke: currentColor; }
+  .contact-success-msg {
+    text-align: center; padding: 12px; background: var(--accent-dim); border: 1px solid rgba(0,255,65,0.2);
+    border-radius: var(--radius-sm); color: var(--accent); font-size: 13px; font-weight: 500;
+    display: none; margin-top: 12px;
+  }
+  .contact-success-msg.show { display: block; }
 
   .floating-resume { position: fixed; bottom: 28px; left: 28px; z-index: 150; display: inline-flex; align-items: center; gap: 10px; font-family: var(--heading); font-size: 13px; font-weight: 700; padding: 12px 22px; border-radius: 50px; background: var(--accent); border: 2px solid var(--accent); color: #000; cursor: pointer; transition: all var(--transition); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; box-shadow: 0 0 20px var(--accent-glow), 0 4px 16px rgba(0,0,0,0.4); }
   .floating-resume:hover { transform: scale(1.05); box-shadow: 0 0 32px var(--accent-glow), 0 8px 24px rgba(0,0,0,0.5); }
@@ -252,7 +332,6 @@
   .tool-item { font-family: var(--tech); font-size: 12px; padding: 8px 18px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 50px; color: var(--ink-secondary); transition: all var(--transition); }
   .tool-item:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
 
-  /* ---------- PROJECT DETAIL PAGE ---------- */
   .project-detail { padding: 120px 0 80px; }
   .back-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading); font-size: 13px; font-weight: 600; color: var(--accent); cursor: pointer; margin-bottom: 40px; transition: all var(--transition); text-transform: uppercase; letter-spacing: 0.06em; }
   .back-btn:hover { text-shadow: 0 0 10px var(--accent-glow); }
@@ -312,18 +391,18 @@
 
   @media (max-width: 768px) {
     .navbar { top:8px; left:8px; right:8px; transform:none; border-radius:30px; } .navbar .container { gap:2px; }
-    .navbar-brand { font-size:11px; padding:6px 10px; } .navbar-nav a { font-size:10px; padding:6px 10px; }
+    .navbar-nav a { font-size:10px; padding:6px 10px; }
     .container { padding:0 20px; } .stats-grid { grid-template-columns:1fr; } .skills-grid-new { grid-template-columns:1fr; }
     .oss-grid { grid-template-columns:1fr; } .hero-meta { flex-wrap:wrap; }
     .education-card { flex-direction:column; align-items:flex-start; text-align:left; }
-    .contact-buttons { flex-direction:column; align-items:stretch; } .btn { justify-content:center; }
     .footer .container { flex-direction:column; text-align:center; } .hero h1 { font-size:36px; }
     .floating-resume { bottom: 16px; left: 16px; font-size: 11px; padding: 10px 18px; }
+    .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+    .contact-card { padding: 32px 24px; }
     .project-detail-metrics { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .navbar-nav a:nth-child(4) { display:none; } .hero h1 { font-size:28px; } .section-title { font-size:24px; }
-    .navbar-brand { border-right:none; margin-right:0; }
     .ai-chat-panel { width:calc(100vw - 40px); right:-8px; bottom:68px; } .ai-chat-wrapper { bottom:16px; right:16px; }
   }
 </style>
@@ -347,12 +426,11 @@
     Download Resume
   </a>
 
-  <!-- ========== MAIN PORTFOLIO PAGE ========== -->
   <div id="mainPage" class="page active">
 
     <nav class="navbar">
       <div class="container">
-         <div class="navbar-nav">
+        <div class="navbar-nav">
           <a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
           <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">
             <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -394,10 +472,10 @@
       <div class="container">
         <div class="section-header"><div class="section-tag">EXPERIENCE</div><h2 class="section-title">A timeline of <span style="color: var(--accent);">growth.</span></h2><p class="section-subtitle">Click any role to expand details.</p></div>
         <div class="timeline-wrapper">
-          <div class="timeline-entry current"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREDICTHQ</span></div><div class="exp-card-title">Principal AI Platform Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sep 2022 – Present</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Built AI-driven event intelligence pipelines processing <span class="metric">10M+</span> global events, boosting forecasting accuracy by <span class="metric">28%</span>.</li><li>Trained models with XGBoost and PyTorch, increasing inference throughput by <span class="metric">22%</span> in production.</li><li>Cut data latency by <span class="metric">35%</span> through real-time ingestion pipelines using Kafka and AWS.</li><li>Established automated model retraining and monitoring, lowering drift incidents by <span class="metric">40%</span>.</li><li>Built observability with Prometheus and Grafana, sustaining <span class="metric">99.9%</span> uptime.</li></ul></div></div></div></div>
-          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div><div class="exp-card-title">AI Platform Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Mar 2020 – Aug 2022</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Boosted user engagement by <span class="metric">20%</span> with personalized content recommendation models.</li><li>Built NLP pipelines for slide content analysis, increasing relevance scoring accuracy by <span class="metric">25%</span>.</li><li>Accelerated experimentation cycles by <span class="metric">30%</span> through A/B testing frameworks for AI features.</li><li>Productionized ML models with cross-functional teams, cutting deployment friction by <span class="metric">40%</span>.</li></ul></div></div></div></div>
-          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div><div class="exp-card-title">Senior Full Stack Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Feb 2018 – Mar 2020</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Boosted frontend performance by <span class="metric">30%</span> building scalable React and Redux applications.</li><li>Developed backend services supporting <span class="metric">50K+</span> daily active users using Node.js and Python.</li><li>Strengthened system reliability by moving from monolith to microservices architecture.</li></ul></div></div></div></div>
-          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">TRBHI</span></div><div class="exp-card-title">Full Stack Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Jun 2016 – Dec 2017</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Built <span class="metric">5+</span> scalable web applications, increasing transaction efficiency.</li><li>Implemented CI/CD pipelines with Jenkins, accelerating release cycles.</li><li>Introduced unit and integration testing across <span class="metric">8+</span> services, improving stability.</li></ul></div></div></div></div>
+          <div class="timeline-entry current"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREDICTHQ</span></div><div class="exp-card-title">Principal AI Platform Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Sep 2022 – Present</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Built AI-driven event intelligence pipelines processing <span class="metric">10M+</span> global events, boosting forecasting accuracy by <span class="metric">28%</span>.</li><li>Trained models with XGBoost and PyTorch, increasing inference throughput by <span class="metric">22%</span>.</li><li>Cut data latency by <span class="metric">35%</span> through real-time ingestion pipelines using Kafka and AWS.</li></ul></div></div></div></div>
+          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div><div class="exp-card-title">AI Platform Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Mar 2020 – Aug 2022</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Boosted user engagement by <span class="metric">20%</span> with personalized content recommendation models.</li><li>Built NLP pipelines for slide content analysis, increasing relevance scoring accuracy by <span class="metric">25%</span>.</li></ul></div></div></div></div>
+          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">PREZI</span></div><div class="exp-card-title">Senior Full Stack Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Feb 2018 – Mar 2020</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Boosted frontend performance by <span class="metric">30%</span> building scalable React and Redux applications.</li><li>Developed backend services supporting <span class="metric">50K+</span> daily active users.</li></ul></div></div></div></div>
+          <div class="timeline-entry"><div class="timeline-line"></div><div class="timeline-dot"></div><div class="exp-card" role="button" tabindex="0" aria-expanded="false"><div class="exp-card-header"><div class="exp-card-info"><div class="exp-card-company-row"><svg class="exp-card-company-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="exp-card-company-tag">TRBHI</span></div><div class="exp-card-title">Full Stack Engineer</div><div class="exp-card-meta-row"><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Jun 2016 – Dec 2017</span><span class="exp-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote</span></div></div><div class="exp-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="exp-card-body"><div class="exp-card-body-inner"><ul><li>Built <span class="metric">5+</span> scalable web applications, increasing transaction efficiency.</li><li>Introduced unit and integration testing across <span class="metric">8+</span> services.</li></ul></div></div></div></div>
         </div>
       </div>
     </section>
@@ -406,24 +484,9 @@
       <div class="container">
         <div class="section-header"><div class="section-tag">[ 03 ] Projects</div><h2 class="section-title">Projects</h2><p class="section-subtitle">Click any project to view full details.</p></div>
         <div class="projects-grid">
-          <div class="project-card" onclick="showProject('project1')">
-            <div class="project-header">
-              <div class="project-header-left"><span class="project-number">PROJECT_01</span><h3>Real-Time Event Intelligence Pipeline</h3></div>
-              <div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-            </div>
-          </div>
-          <div class="project-card" onclick="showProject('project2')">
-            <div class="project-header">
-              <div class="project-header-left"><span class="project-number">PROJECT_02</span><h3>RAG System with Automated Model Operations</h3></div>
-              <div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-            </div>
-          </div>
-          <div class="project-card" onclick="showProject('project3')">
-            <div class="project-header">
-              <div class="project-header-left"><span class="project-number">PROJECT_03</span><h3>Real-Time Feature Engineering Platform</h3></div>
-              <div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-            </div>
-          </div>
+          <div class="project-card" onclick="showProject('project1')"><div class="project-header"><div class="project-header-left"><span class="project-number">PROJECT_01</span><h3>Real-Time Event Intelligence Pipeline</h3></div><div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div></div>
+          <div class="project-card" onclick="showProject('project2')"><div class="project-header"><div class="project-header-left"><span class="project-number">PROJECT_02</span><h3>RAG System with Automated Model Operations</h3></div><div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div></div>
+          <div class="project-card" onclick="showProject('project3')"><div class="project-header"><div class="project-header-left"><span class="project-number">PROJECT_03</span><h3>Real-Time Feature Engineering Platform</h3></div><div class="project-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div></div>
         </div>
       </div>
     </section>
@@ -468,13 +531,57 @@
     </section>
 
     <section id="contact" class="section">
-      <div class="container contact-section">
-        <h2 class="contact-title">Let's build something that stays up.</h2>
-        <p class="contact-text">Open to Principal / Staff-level AI platform and infrastructure roles. Reach out directly — no forms, no queue.</p>
-        <div class="contact-buttons">
-          <a href="mailto:david.clark67@outlook.com" class="btn btn-primary">david.clark67@outlook.com</a>
-          <a href="tel:+16505300517" class="btn">(650) 530-0517</a>
-          <a href="https://linkedin.com/in/david-clark-bab9053b9" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-card-label">// SECURE COMMUNICATION LINK</div>
+          <h2>Get In Touch</h2>
+          <div class="contact-card-underline"></div>
+          <div class="contact-layout">
+            <div class="contact-info-col">
+              <p class="intro-text">Open to Principal and Staff-level AI platform and infrastructure roles. Reach out directly — no forms, no queue.</p>
+              <div class="contact-info-row">
+                <div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <div class="contact-info-text"><span class="contact-label">PRIMARY EMAIL</span><span class="contact-value"><a href="mailto:david.clark67@outlook.com">david.clark67@outlook.com</a></span></div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                <div class="contact-info-text"><span class="contact-label">DIRECT LINE</span><span class="contact-value">(650) 530-0517</span></div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div class="contact-info-text"><span class="contact-label">LOCATION</span><span class="contact-value">Rochester, MN, US</span></div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+                <div class="contact-info-text"><span class="contact-label">LINKEDIN</span><span class="contact-value"><a href="https://linkedin.com/in/david-clark-bab9053b9" target="_blank" rel="noopener">/in/david-clark</a></span></div>
+              </div>
+            </div>
+            <div class="contact-form-col">
+              <form id="contactForm" novalidate>
+                <div class="contact-input-group">
+                  <input type="text" id="formName" placeholder="Your name" required />
+                  <span class="contact-error-msg">Please enter your name</span>
+                </div>
+                <div class="contact-input-group">
+                  <input type="email" id="formEmail" placeholder="Your email address" required />
+                  <span class="contact-error-msg">Please enter a valid email</span>
+                </div>
+                <div class="contact-input-group">
+                  <input type="text" id="formSubject" placeholder="Subject" required />
+                  <span class="contact-error-msg">Please enter a subject</span>
+                </div>
+                <div class="contact-input-group">
+                  <textarea id="formMessage" rows="4" placeholder="Your message..." required></textarea>
+                  <span class="contact-error-msg">Please enter your message</span>
+                </div>
+                <button type="submit" class="contact-submit-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  Send Message
+                </button>
+              </form>
+              <div class="contact-success-msg" id="contactSuccess">Message ready to send. Thank you for reaching out!</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -484,170 +591,52 @@
     </footer>
   </div>
 
-  <!-- ========== PROJECT 1 DETAIL PAGE ========== -->
   <div id="project1" class="page">
-    <div class="project-detail">
-      <div class="container">
-        <div class="back-btn" onclick="showMainPage()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back to Portfolio
-        </div>
-        <div class="project-detail-header">
-          <div class="project-detail-tag">PROJECT_01</div>
-          <h2>Real-Time Event Intelligence Pipeline</h2>
-          <p class="project-subtitle">An end-to-end real-time system that ingests, classifies, and scores millions of global events for enterprise demand forecasting.</p>
-        </div>
-        <div class="project-detail-image">
-          <div class="placeholder-img">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 2v20M2 12h20"/></svg>
-            <span>Architecture Diagram Placeholder</span>
-          </div>
-        </div>
-        <div class="project-detail-content">
-          <div class="project-detail-metrics">
-            <div class="project-detail-metric"><div class="metric-value">28%</div><div class="metric-label">Accuracy Improvement</div></div>
-            <div class="project-detail-metric"><div class="metric-value">10M+</div><div class="metric-label">Events Processed</div></div>
-            <div class="project-detail-metric"><div class="metric-value">99.9%</div><div class="metric-label">Uptime</div></div>
-          </div>
-          <div class="project-detail-section">
-            <h3>Overview</h3>
-            <p>I built an end-to-end real-time event intelligence system that ingests, classifies, and scores millions of global events to power demand forecasting for enterprise clients. The pipeline consumes raw event streams from multiple data sources through Kafka, processes them with Spark Streaming for real-time enrichment including NLP-based classification, geospatial tagging, and temporal feature extraction then serves predictions through a low-latency FastAPI layer.</p>
-          </div>
-          <div class="project-detail-section">
-            <h3>Key Achievements</h3>
-            <ul>
-              <li>Trained XGBoost and PyTorch models achieving a <span class="metric">28%</span> lift in forecasting accuracy</li>
-              <li>Designed infrastructure on AWS ECS with Terraform</li>
-              <li>Set up automated CI/CD pipelines through GitHub Actions cutting deployment time by <span class="metric">50%</span></li>
-              <li>Built Prometheus and Grafana dashboards sustaining <span class="metric">99.9%</span> uptime</li>
-              <li>Hybrid batch-and-streaming architecture reduced infrastructure costs by <span class="metric">20%</span></li>
-            </ul>
-          </div>
-          <div class="project-detail-section">
-            <h3>Technologies Used</h3>
-            <div class="project-detail-tech">
-              <span>Kafka</span><span>Spark Streaming</span><span>XGBoost</span><span>PyTorch</span><span>FastAPI</span><span>AWS ECS</span><span>Terraform</span><span>Prometheus</span><span>Grafana</span><span>GitHub Actions</span><span>NLP</span><span>Python</span>
-            </div>
-          </div>
-        </div>
+    <div class="project-detail"><div class="container">
+      <div class="back-btn" onclick="showMainPage()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back to Portfolio</div>
+      <div class="project-detail-header"><div class="project-detail-tag">PROJECT_01</div><h2>Real-Time Event Intelligence Pipeline</h2><p class="project-subtitle">An end-to-end real-time system that ingests, classifies, and scores millions of global events for enterprise demand forecasting.</p></div>
+      <div class="project-detail-image"><div class="placeholder-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 2v20M2 12h20"/></svg><span>Architecture Diagram Placeholder</span></div></div>
+      <div class="project-detail-content">
+        <div class="project-detail-metrics"><div class="project-detail-metric"><div class="metric-value">28%</div><div class="metric-label">Accuracy Improvement</div></div><div class="project-detail-metric"><div class="metric-value">10M+</div><div class="metric-label">Events Processed</div></div><div class="project-detail-metric"><div class="metric-value">99.9%</div><div class="metric-label">Uptime</div></div></div>
+        <div class="project-detail-section"><h3>Overview</h3><p>I built an end-to-end real-time event intelligence system that ingests, classifies, and scores millions of global events to power demand forecasting for enterprise clients. The pipeline consumes raw event streams from multiple data sources through Kafka, processes them with Spark Streaming for real-time enrichment including NLP-based classification, geospatial tagging, and temporal feature extraction then serves predictions through a low-latency FastAPI layer.</p></div>
+        <div class="project-detail-section"><h3>Key Achievements</h3><ul><li>Trained XGBoost and PyTorch models achieving a <span class="metric">28%</span> lift in forecasting accuracy</li><li>Designed infrastructure on AWS ECS with Terraform</li><li>Set up automated CI/CD pipelines cutting deployment time by <span class="metric">50%</span></li><li>Built Prometheus and Grafana dashboards sustaining <span class="metric">99.9%</span> uptime</li><li>Hybrid batch-and-streaming architecture reduced costs by <span class="metric">20%</span></li></ul></div>
+        <div class="project-detail-section"><h3>Technologies Used</h3><div class="project-detail-tech"><span>Kafka</span><span>Spark Streaming</span><span>XGBoost</span><span>PyTorch</span><span>FastAPI</span><span>AWS ECS</span><span>Terraform</span><span>Prometheus</span><span>Grafana</span><span>GitHub Actions</span><span>NLP</span><span>Python</span></div></div>
       </div>
-    </div>
+    </div></div>
   </div>
 
-  <!-- ========== PROJECT 2 DETAIL PAGE ========== -->
   <div id="project2" class="page">
-    <div class="project-detail">
-      <div class="container">
-        <div class="back-btn" onclick="showMainPage()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back to Portfolio
-        </div>
-        <div class="project-detail-header">
-          <div class="project-detail-tag">PROJECT_02</div>
-          <h2>RAG System with Automated Model Operations</h2>
-          <p class="project-subtitle">A production-grade Retrieval-Augmented Generation system designed for reliability, observability, and continuous improvement.</p>
-        </div>
-        <div class="project-detail-image">
-          <div class="placeholder-img">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10" r="2"/></svg>
-            <span>RAG Architecture Placeholder</span>
-          </div>
-        </div>
-        <div class="project-detail-content">
-          <div class="project-detail-metrics">
-            <div class="project-detail-metric"><div class="metric-value">30%</div><div class="metric-label">Faster Experimentation</div></div>
-            <div class="project-detail-metric"><div class="metric-value">2</div><div class="metric-label">Engineers Mentored</div></div>
-            <div class="project-detail-metric"><div class="metric-value">0</div><div class="metric-label">Production Incidents</div></div>
-          </div>
-          <div class="project-detail-section">
-            <h3>Overview</h3>
-            <p>I built a production-grade Retrieval-Augmented Generation system over a large domain-specific document corpus, designed from the ground up for reliability and observability. I implemented a chunking and embedding pipeline that processes documents into a vector database, selecting chunking strategies and embedding models through an A/B testing framework I wrote from scratch.</p>
-          </div>
-          <div class="project-detail-section">
-            <h3>Key Achievements</h3>
-            <ul>
-              <li>Built A/B testing framework accelerating experimentation cycles by <span class="metric">30%</span></li>
-              <li>Implemented automated drift detection triggering model retraining</li>
-              <li>Designed monitoring stack with Prometheus tracking retrieval precision and generation latency</li>
-              <li>Created CI/CD pipeline that gates deployments on evaluation benchmarks</li>
-              <li>Mentored <span class="metric">2</span> engineers through system design and testing strategies</li>
-            </ul>
-          </div>
-          <div class="project-detail-section">
-            <h3>Technologies Used</h3>
-            <div class="project-detail-tech">
-              <span>RAG</span><span>LLMs</span><span>Vector DB</span><span>FastAPI</span><span>Prometheus</span><span>CI/CD</span><span>A/B Testing</span><span>Python</span><span>Embeddings</span><span>Semantic Search</span>
-            </div>
-          </div>
-        </div>
+    <div class="project-detail"><div class="container">
+      <div class="back-btn" onclick="showMainPage()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back to Portfolio</div>
+      <div class="project-detail-header"><div class="project-detail-tag">PROJECT_02</div><h2>RAG System with Automated Model Operations</h2><p class="project-subtitle">A production-grade Retrieval-Augmented Generation system designed for reliability, observability, and continuous improvement.</p></div>
+      <div class="project-detail-image"><div class="placeholder-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10" r="2"/></svg><span>RAG Architecture Placeholder</span></div></div>
+      <div class="project-detail-content">
+        <div class="project-detail-metrics"><div class="project-detail-metric"><div class="metric-value">30%</div><div class="metric-label">Faster Experimentation</div></div><div class="project-detail-metric"><div class="metric-value">2</div><div class="metric-label">Engineers Mentored</div></div><div class="project-detail-metric"><div class="metric-value">0</div><div class="metric-label">Production Incidents</div></div></div>
+        <div class="project-detail-section"><h3>Overview</h3><p>I built a production-grade Retrieval-Augmented Generation system over a large domain-specific document corpus, designed from the ground up for reliability and observability. I implemented a chunking and embedding pipeline that processes documents into a vector database, selecting chunking strategies and embedding models through an A/B testing framework I wrote from scratch.</p></div>
+        <div class="project-detail-section"><h3>Key Achievements</h3><ul><li>Built A/B testing framework accelerating experimentation cycles by <span class="metric">30%</span></li><li>Implemented automated drift detection triggering model retraining</li><li>Designed monitoring stack with Prometheus tracking retrieval precision</li><li>Created CI/CD pipeline that gates deployments on evaluation benchmarks</li></ul></div>
+        <div class="project-detail-section"><h3>Technologies Used</h3><div class="project-detail-tech"><span>RAG</span><span>LLMs</span><span>Vector DB</span><span>FastAPI</span><span>Prometheus</span><span>CI/CD</span><span>A/B Testing</span><span>Python</span><span>Embeddings</span><span>Semantic Search</span></div></div>
       </div>
-    </div>
+    </div></div>
   </div>
 
-  <!-- ========== PROJECT 3 DETAIL PAGE ========== -->
   <div id="project3" class="page">
-    <div class="project-detail">
-      <div class="container">
-        <div class="back-btn" onclick="showMainPage()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          Back to Portfolio
-        </div>
-        <div class="project-detail-header">
-          <div class="project-detail-tag">PROJECT_03</div>
-          <h2>Real-Time Feature Engineering Platform</h2>
-          <p class="project-subtitle">A platform computing temporal, aggregate, and cross-entity features from streaming event logs with sub-10ms latency.</p>
-        </div>
-        <div class="project-detail-image">
-          <div class="placeholder-img">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg>
-            <span>Feature Store Architecture Placeholder</span>
-          </div>
-        </div>
-        <div class="project-detail-content">
-          <div class="project-detail-metrics">
-            <div class="project-detail-metric"><div class="metric-value">-35%</div><div class="metric-label">Latency Reduction</div></div>
-            <div class="project-detail-metric"><div class="metric-value">+18%</div><div class="metric-label">Feature Quality</div></div>
-            <div class="project-detail-metric"><div class="metric-value">8+</div><div class="metric-label">Services Tested</div></div>
-          </div>
-          <div class="project-detail-section">
-            <h3>Overview</h3>
-            <p>I built a real-time feature engineering platform that computes temporal, aggregate, and cross-entity features from raw streaming event logs and serves them to ML models with sub-10ms latency. The platform uses Kafka Streams for windowed aggregations combined with Airflow DAGs for offline feature backfills.</p>
-          </div>
-          <div class="project-detail-section">
-            <h3>Key Achievements</h3>
-            <ul>
-              <li>Reduced data latency by <span class="metric">35%</span> compared to previous batch-only approach</li>
-              <li>Improved feature quality metrics by <span class="metric">18%</span> through richer signal capture</li>
-              <li>Designed Redis-backed online feature store decoupling computation from serving</li>
-              <li>Packaged platform with Docker and Terraform, deployed on Kubernetes</li>
-              <li>Wrote integration tests across <span class="metric">8+</span> services using PyTest</li>
-            </ul>
-          </div>
-          <div class="project-detail-section">
-            <h3>Technologies Used</h3>
-            <div class="project-detail-tech">
-              <span>Kafka Streams</span><span>Redis</span><span>Airflow</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>PyTest</span><span>Python</span><span>Feature Store</span>
-            </div>
-          </div>
-        </div>
+    <div class="project-detail"><div class="container">
+      <div class="back-btn" onclick="showMainPage()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back to Portfolio</div>
+      <div class="project-detail-header"><div class="project-detail-tag">PROJECT_03</div><h2>Real-Time Feature Engineering Platform</h2><p class="project-subtitle">A platform computing temporal, aggregate, and cross-entity features from streaming event logs with sub-10ms latency.</p></div>
+      <div class="project-detail-image"><div class="placeholder-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg><span>Feature Store Architecture Placeholder</span></div></div>
+      <div class="project-detail-content">
+        <div class="project-detail-metrics"><div class="project-detail-metric"><div class="metric-value">-35%</div><div class="metric-label">Latency Reduction</div></div><div class="project-detail-metric"><div class="metric-value">+18%</div><div class="metric-label">Feature Quality</div></div><div class="project-detail-metric"><div class="metric-value">8+</div><div class="metric-label">Services Tested</div></div></div>
+        <div class="project-detail-section"><h3>Overview</h3><p>I built a real-time feature engineering platform that computes temporal, aggregate, and cross-entity features from raw streaming event logs and serves them to ML models with sub-10ms latency. The platform uses Kafka Streams for windowed aggregations combined with Airflow DAGs for offline feature backfills.</p></div>
+        <div class="project-detail-section"><h3>Key Achievements</h3><ul><li>Reduced data latency by <span class="metric">35%</span> compared to previous batch-only approach</li><li>Improved feature quality metrics by <span class="metric">18%</span> through richer signal capture</li><li>Designed Redis-backed online feature store decoupling computation from serving</li><li>Packaged platform with Docker and Terraform, deployed on Kubernetes</li></ul></div>
+        <div class="project-detail-section"><h3>Technologies Used</h3><div class="project-detail-tech"><span>Kafka Streams</span><span>Redis</span><span>Airflow</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>PyTest</span><span>Python</span><span>Feature Store</span></div></div>
       </div>
-    </div>
+    </div></div>
   </div>
 
   <script>
-    // Page navigation
-    function showProject(projectId) {
-      document.getElementById('mainPage').classList.remove('active');
-      document.getElementById(projectId).classList.add('active');
-      window.scrollTo(0, 0);
-    }
-    function showMainPage() {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('mainPage').classList.add('active');
-      window.scrollTo(0, 0);
-    }
+    function showProject(id) { document.getElementById('mainPage').classList.remove('active'); document.getElementById(id).classList.add('active'); window.scrollTo(0, 0); }
+    function showMainPage() { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById('mainPage').classList.add('active'); window.scrollTo(0, 0); }
 
-    // Circuit Board Background
     const canvas = document.getElementById('circuit-layer');
     const ctx = canvas.getContext('2d');
     function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -670,68 +659,46 @@
     }
     drawCircuit();
 
-    // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
-    themeToggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
+    themeToggle.addEventListener('click', () => { const c = html.getAttribute('data-theme'), n = c === 'dark' ? 'light' : 'dark'; html.setAttribute('data-theme', n); localStorage.setItem('theme', n); });
 
-    // Collapsible experience cards
-    document.querySelectorAll('.exp-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const isOpen = card.classList.contains('open');
-        card.classList.toggle('open');
-        card.setAttribute('aria-expanded', !isOpen);
-      });
-    });
+    document.querySelectorAll('.exp-card').forEach(card => { card.addEventListener('click', () => { const o = card.classList.contains('open'); card.classList.toggle('open'); card.setAttribute('aria-expanded', !o); }); });
 
-    // AI Chatbot
+    const contactForm = document.getElementById('contactForm'), successMsg = document.getElementById('contactSuccess'), formName = document.getElementById('formName'), formEmail = document.getElementById('formEmail'), formSubject = document.getElementById('formSubject'), formMessage = document.getElementById('formMessage');
+    function showError(i, s) { s ? i.classList.add('error') : i.classList.remove('error'); }
+    function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault(); let v = true;
+      if (!formName.value.trim()) { showError(formName, true); v = false; } else showError(formName, false);
+      if (!formEmail.value.trim() || !validateEmail(formEmail.value.trim())) { showError(formEmail, true); v = false; } else showError(formEmail, false);
+      if (!formSubject.value.trim()) { showError(formSubject, true); v = false; } else showError(formSubject, false);
+      if (!formMessage.value.trim()) { showError(formMessage, true); v = false; } else showError(formMessage, false);
+      if (v) { const d = { name: formName.value.trim(), email: formEmail.value.trim(), subject: formSubject.value.trim(), message: formMessage.value.trim() }; console.log('Form data:', d); successMsg.classList.add('show'); contactForm.reset(); setTimeout(() => successMsg.classList.remove('show'), 4000); }
+    });
+    [formName, formEmail, formSubject, formMessage].forEach(i => i.addEventListener('input', () => showError(i, false)));
+
     const aiChatBtn = document.getElementById('aiChatBtn'), aiChatPanel = document.getElementById('aiChatPanel'), aiChatClose = document.getElementById('aiChatClose'), aiChatMessages = document.getElementById('aiChatMessages'), aiChatInput = document.getElementById('aiChatInput'), aiChatSend = document.getElementById('aiChatSend');
-    const portfolioData = {
-      name: "David Clark", title: "Principal AI Platform Engineer", location: "Rochester, MN, US", phone: "(650) 530-0517", email: "david.clark67@outlook.com", linkedin: "linkedin.com/in/david-clark-bab9053b9",
-      summary: "Ten years building production-grade AI systems and scalable full-stack platforms.",
-      keyMetrics: { accuracy: "+28% prediction accuracy at PredictHQ", latency: "-35% data latency reduction", users: "100K+ daily users served" },
-      currentRole: { title: "Principal AI Platform Engineer", company: "PredictHQ", dates: "Sep 2022 – Present" },
-      projects: [{ name: "Event Intelligence Pipeline", description: "Kafka, Spark, XGBoost, PyTorch, FastAPI. 28% accuracy lift." }, { name: "RAG System", description: "Vector DB, LLM streaming, drift detection. 30% faster experimentation." }, { name: "Feature Engineering Platform", description: "Kafka Streams, Redis, Airflow. 35% latency reduction." }],
-      skills: ["AI/ML: RAG, LLMs, PyTorch, TensorFlow, NLP", "Languages: Python, TypeScript, JavaScript, Go, Java", "Data: Kafka, Spark, Airflow", "Cloud: AWS, GCP, Kubernetes, Docker, Terraform"],
-      education: ["MS Computer Science – Stratford University", "BS Computer Science – Stratford University"]
-    };
-    function findAnswer(q) {
-      q = q.toLowerCase();
-      if (q.includes('contact')||q.includes('email')||q.includes('phone')) return `Reach David at ${portfolioData.email} or ${portfolioData.phone}.`;
-      if (q.includes('current')||q.includes('predicthq')) return `${portfolioData.currentRole.title} at ${portfolioData.currentRole.company} (${portfolioData.currentRole.dates}).`;
-      if (q.includes('experience')||q.includes('career')) return `10 years: Trbhi → Prezi → PredictHQ.`;
-      if (q.includes('project')) return `3 projects: ${portfolioData.projects.map(p=>p.name).join(', ')}.`;
-      if (q.includes('skill')||q.includes('tech')||q.includes('stack')) return `Stack: ${portfolioData.skills.join('; ')}.`;
-      if (q.includes('education')||q.includes('degree')) return `Education: ${portfolioData.education.join('; ')}.`;
-      if (q.includes('hire')||q.includes('available')) return `Open to Principal/Staff-level AI platform roles. Contact: ${portfolioData.email}.`;
-      return `I can tell you about David's experience, skills, projects, or education. What would you like to know?`;
-    }
-    function addMessage(text, type) { const m = document.createElement('div'); m.className = `ai-message ${type}`; m.textContent = text; aiChatMessages.appendChild(m); aiChatMessages.scrollTop = aiChatMessages.scrollHeight; }
-    function addTypingIndicator() { const t = document.createElement('div'); t.className = 'ai-typing-indicator'; t.id = 'typingIndicator'; t.innerHTML = '<span></span><span></span><span></span>'; aiChatMessages.appendChild(t); aiChatMessages.scrollTop = aiChatMessages.scrollHeight; }
-    function removeTypingIndicator() { const t = document.getElementById('typingIndicator'); if (t) t.remove(); }
-    function handleSend() { const q = aiChatInput.value.trim(); if (!q) return; addMessage(q, 'user'); aiChatInput.value = ''; addTypingIndicator(); setTimeout(() => { removeTypingIndicator(); addMessage(findAnswer(q), 'bot'); }, 800 + Math.random() * 600); }
-    aiChatBtn.addEventListener('click', () => { aiChatPanel.classList.toggle('open'); if (aiChatPanel.classList.contains('open')) aiChatInput.focus(); });
-    aiChatClose.addEventListener('click', (e) => { e.stopPropagation(); aiChatPanel.classList.remove('open'); });
-    aiChatSend.addEventListener('click', handleSend);
-    aiChatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
-    document.addEventListener('click', (e) => { if (!e.target.closest('.ai-chat-wrapper')) aiChatPanel.classList.remove('open'); });
+    const pd = { name:"David Clark", email:"david.clark67@outlook.com", phone:"(650) 530-0517", location:"Rochester, MN", currentRole:{title:"Principal AI Platform Engineer",company:"PredictHQ"}, projects:[{name:"Event Intelligence Pipeline"},{name:"RAG System"},{name:"Feature Engineering Platform"}], skills:["AI/ML: RAG, LLMs, PyTorch, TensorFlow, NLP","Languages: Python, TypeScript, JavaScript, Go, Java"] };
+    function fa(q) { q=q.toLowerCase(); if(q.includes('contact')||q.includes('email')) return `Reach David at ${pd.email} or ${pd.phone}.`; if(q.includes('current')||q.includes('predicthq')) return `${pd.currentRole.title} at ${pd.currentRole.company}.`; if(q.includes('experience')) return `10 years: Trbhi → Prezi → PredictHQ.`; if(q.includes('project')) return `3 projects: ${pd.projects.map(p=>p.name).join(', ')}.`; if(q.includes('skill')||q.includes('stack')) return `Stack: ${pd.skills.join('; ')}.`; if(q.includes('hire')||q.includes('available')) return `Open to Principal/Staff-level AI platform roles.`; return `Ask me about David's experience, skills, or projects.`; }
+    function am(t,ty) { const m=document.createElement('div'); m.className=`ai-message ${ty}`; m.textContent=t; aiChatMessages.appendChild(m); aiChatMessages.scrollTop=aiChatMessages.scrollHeight; }
+    function ati() { const t=document.createElement('div'); t.className='ai-typing-indicator'; t.id='typingIndicator'; t.innerHTML='<span></span><span></span><span></span>'; aiChatMessages.appendChild(t); aiChatMessages.scrollTop=aiChatMessages.scrollHeight; }
+    function rti() { const t=document.getElementById('typingIndicator'); if(t) t.remove(); }
+    function hs() { const q=aiChatInput.value.trim(); if(!q) return; am(q,'user'); aiChatInput.value=''; ati(); setTimeout(()=>{rti(); am(fa(q),'bot');},800+Math.random()*600); }
+    aiChatBtn.addEventListener('click',()=>{aiChatPanel.classList.toggle('open'); if(aiChatPanel.classList.contains('open')) aiChatInput.focus();});
+    aiChatClose.addEventListener('click',(e)=>{e.stopPropagation(); aiChatPanel.classList.remove('open');});
+    aiChatSend.addEventListener('click',hs);
+    aiChatInput.addEventListener('keypress',(e)=>{if(e.key==='Enter') hs();});
+    document.addEventListener('click',(e)=>{if(!e.target.closest('.ai-chat-wrapper')) aiChatPanel.classList.remove('open');});
 
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-      window.addEventListener('scroll', () => { scrollIndicator.style.opacity = window.scrollY > 100 ? '0' : '1'; scrollIndicator.style.transition = 'opacity 0.3s ease'; });
-    }
+    const si = document.querySelector('.scroll-indicator');
+    if(si) window.addEventListener('scroll',()=>{si.style.opacity=window.scrollY>100?'0':'1'; si.style.transition='opacity 0.3s ease';});
 
-    function animateCount(el) { const t = parseInt(el.dataset.target), s = el.dataset.suffix || '', p = el.dataset.prefix || '', st = performance.now(); function u(ct) { const pr = Math.min((ct - st) / 2000, 1), c = Math.floor(t * (1 - Math.pow(1 - pr, 3))); el.textContent = p + c + s; if (pr < 1) requestAnimationFrame(u); } requestAnimationFrame(u); }
-    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.stat-number').forEach(n => animateCount(n)); observer.unobserve(e.target); } }); }, { threshold: 0.5 });
-    const statsGrid = document.querySelector('.stats-grid');
-    if (statsGrid) observer.observe(statsGrid);
+    function ac(el){const t=parseInt(el.dataset.target),s=el.dataset.suffix||'',p=el.dataset.prefix||'',st=performance.now();function u(ct){const pr=Math.min((ct-st)/2000,1),c=Math.floor(t*(1-Math.pow(1-pr,3)));el.textContent=p+c+s;if(pr<1)requestAnimationFrame(u);}requestAnimationFrame(u);}
+    const ob=new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting){en.target.querySelectorAll('.stat-number').forEach(n=>ac(n));ob.unobserve(en.target);}})},{threshold:0.5});
+    const sg=document.querySelector('.stats-grid'); if(sg) ob.observe(sg);
   </script>
 
 </body>
