@@ -3648,156 +3648,54 @@
     </div>
 
     <script>
-      // Google Drive Form Endpoint — PASTE YOUR URL HERE
-      const FORM_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+         // Contact Form with Google Drive logging
+      const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzCugSpZ1jj0A8x7Q4UansKwc-3sspr8PUZO8Q0ANGXuEkeRGIBQtIP4Vie0usGxf2oCA/exec";
 
-      function showProject(id) {
-        document.getElementById("mainPage").classList.remove("active");
-        document.getElementById(id).classList.add("active");
-        window.scrollTo(0, 0);
-      }
-      function showMainPage() {
-        document
-          .querySelectorAll(".page")
-          .forEach((p) => p.classList.remove("active"));
-        document.getElementById("mainPage").classList.add("active");
-        window.scrollTo(0, 0);
+      var contactForm = document.getElementById("contactForm");
+      var successMsg = document.getElementById("contactSuccess");
+      var errorMsg = document.getElementById("contactError");
+      var submitBtn = document.getElementById("submitBtn");
+      var submitText = document.getElementById("submitText");
+      var submitLoader = document.getElementById("submitLoader");
+      var formName = document.getElementById("formName");
+      var formEmail = document.getElementById("formEmail");
+      var formSubject = document.getElementById("formSubject");
+      var formMessage = document.getElementById("formMessage");
+
+      function showError(input, show) {
+        if (show) { input.classList.add("error"); }
+        else { input.classList.remove("error"); }
       }
 
-      const canvas = document.getElementById("circuit-layer"),
-        ctx = canvas.getContext("2d");
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       }
-      resizeCanvas();
-      window.addEventListener("resize", () => {
-        resizeCanvas();
-        generateNodes();
-      });
-      let nodes = [],
-        connections = [];
-      function generateNodes() {
-        nodes = [];
-        connections = [];
-        const count = Math.floor((canvas.width * canvas.height) / 18000);
-        for (let i = 0; i < count; i++)
-          nodes.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-            size: 1.5 + Math.random() * 2.5,
-            pulse: Math.random() * Math.PI * 2,
-          });
-        for (let i = 0; i < nodes.length; i++)
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x,
-              dy = nodes[i].y - nodes[j].y,
-              dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 160)
-              connections.push({
-                from: i,
-                to: j,
-                opacity: Math.max(0, 1 - dist / 160),
-              });
-          }
-      }
-      generateNodes();
-      function drawCircuit() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        nodes.forEach((n) => {
-          n.x += n.vx;
-          n.y += n.vy;
-          n.pulse += 0.02;
-          if (n.x < 0) n.x = canvas.width;
-          if (n.x > canvas.width) n.x = 0;
-          if (n.y < 0) n.y = canvas.height;
-          if (n.y > canvas.height) n.y = 0;
-        });
-        connections.forEach((c) => {
-          const f = nodes[c.from],
-            t = nodes[c.to];
-          ctx.strokeStyle = `rgba(0, 255, 65, ${c.opacity * 0.3})`;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(f.x, f.y);
-          ctx.lineTo(t.x, t.y);
-          ctx.stroke();
-        });
-        nodes.forEach((n) => {
-          const pa = 0.4 + Math.sin(n.pulse) * 0.3,
-            g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.size * 3);
-          g.addColorStop(0, `rgba(0, 255, 65, ${pa})`);
-          g.addColorStop(1, "rgba(0, 255, 65, 0)");
-          ctx.fillStyle = g;
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, n.size * 3, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.fillStyle = `rgba(0, 255, 65, ${pa + 0.2})`;
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
-          ctx.fill();
-        });
-        requestAnimationFrame(drawCircuit);
-      }
-      drawCircuit();
 
-      const themeToggle = document.getElementById("themeToggle"),
-        html = document.documentElement;
-      const savedTheme = localStorage.getItem("theme") || "dark";
-      html.setAttribute("data-theme", savedTheme);
-      themeToggle.addEventListener("click", () => {
-        const c = html.getAttribute("data-theme"),
-          n = c === "dark" ? "light" : "dark";
-        html.setAttribute("data-theme", n);
-        localStorage.setItem("theme", n);
-      });
-
-      document.querySelectorAll(".exp-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          const o = card.classList.contains("open");
-          card.classList.toggle("open");
-          card.setAttribute("aria-expanded", !o);
-        });
-      });
-
-            // Contact Form with Google Drive logging
-      const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxId1h1ra0AJJNKoicIQWu0qprO5TX8bxL9qeVlJ6E5FmtRNNv-upFuUO2qstqvXZQ8DQ/exec";
-
-      const contactForm = document.getElementById("contactForm"),
-        successMsg = document.getElementById("contactSuccess"),
-        errorMsg = document.getElementById("contactError"),
-        submitBtn = document.getElementById("submitBtn"),
-        submitText = document.getElementById("submitText"),
-        submitLoader = document.getElementById("submitLoader");
-      const formName = document.getElementById("formName"),
-        formEmail = document.getElementById("formEmail"),
-        formSubject = document.getElementById("formSubject"),
-        formMessage = document.getElementById("formMessage");
-      
-      function showError(i, s) {
-        s ? i.classList.add("error") : i.classList.remove("error");
-      }
-      function validateEmail(e) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
-      }
       function setLoading(state) {
         submitBtn.disabled = state;
         submitText.style.display = state ? "none" : "inline";
         submitLoader.style.display = state ? "inline" : "none";
       }
-      
-      contactForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        let v = true;
-        if (!formName.value.trim()) { showError(formName, true); v = false; } else showError(formName, false);
-        if (!formEmail.value.trim() || !validateEmail(formEmail.value.trim())) { showError(formEmail, true); v = false; } else showError(formEmail, false);
-        if (!formSubject.value.trim()) { showError(formSubject, true); v = false; } else showError(formSubject, false);
-        if (!formMessage.value.trim()) { showError(formMessage, true); v = false; } else showError(formMessage, false);
-        if (!v) return;
 
-        const formData = {
+      contactForm.onsubmit = function(e) {
+        e.preventDefault();
+        var valid = true;
+
+        if (!formName.value.trim()) { showError(formName, true); valid = false; }
+        else { showError(formName, false); }
+
+        if (!formEmail.value.trim() || !validateEmail(formEmail.value.trim())) { showError(formEmail, true); valid = false; }
+        else { showError(formEmail, false); }
+
+        if (!formSubject.value.trim()) { showError(formSubject, true); valid = false; }
+        else { showError(formSubject, false); }
+
+        if (!formMessage.value.trim()) { showError(formMessage, true); valid = false; }
+        else { showError(formMessage, false); }
+
+        if (!valid) return false;
+
+        var formData = {
           name: formName.value.trim(),
           email: formEmail.value.trim(),
           subject: formSubject.value.trim(),
@@ -3809,114 +3707,40 @@
         successMsg.classList.remove("show");
         errorMsg.classList.remove("show");
 
-        try {
-          const res = await fetch(FORM_ENDPOINT, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-          });
-          
-          if (res.ok) {
-            const responseData = await res.json();
-            if (responseData.status === "success") {
-              successMsg.classList.add("show");
-              contactForm.reset();
-              setTimeout(() => successMsg.classList.remove("show"), 4000);
-            } else {
-              errorMsg.classList.add("show");
-              setTimeout(() => errorMsg.classList.remove("show"), 5000);
-            }
+        fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        })
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          if (data.status === "success") {
+            successMsg.classList.add("show");
+            contactForm.reset();
+            setTimeout(function() { successMsg.classList.remove("show"); }, 4000);
           } else {
             errorMsg.classList.add("show");
-            setTimeout(() => errorMsg.classList.remove("show"), 5000);
+            setTimeout(function() { errorMsg.classList.remove("show"); }, 5000);
           }
-        } catch (err) {
-          console.error("Form submission error:", err);
+        })
+        .catch(function(err) {
+          console.error("Form error:", err);
           errorMsg.classList.add("show");
-          setTimeout(() => errorMsg.classList.remove("show"), 5000);
-        } finally {
+          setTimeout(function() { errorMsg.classList.remove("show"); }, 5000);
+        })
+        .finally(function() {
           setLoading(false);
-        }
-      });
+        });
 
-      [formName, formEmail, formSubject, formMessage].forEach((i) =>
-        i.addEventListener("input", () => showError(i, false))
-      );
-
-      const aiChatBtn = document.getElementById("aiChatBtn"),
-        aiChatPanel = document.getElementById("aiChatPanel"),
-        aiChatClose = document.getElementById("aiChatClose"),
-        aiChatMessages = document.getElementById("aiChatMessages"),
-        aiChatInput = document.getElementById("aiChatInput"),
-        aiChatSend = document.getElementById("aiChatSend");
-      const pd = {
-        name: "David Clark",
-        email: "david.clark67@outlook.com",
-        phone: "(650) 530-0517",
-        location: "Rochester, MN",
-        currentRole: {
-          title: "Principal AI Platform Engineer",
-          company: "PredictHQ",
-        },
-        projects: [
-          { name: "Event Intelligence Pipeline" },
-          { name: "RAG System" },
-          { name: "Feature Engineering Platform" },
-        ],
-        skills: [
-          "AI/ML: RAG, LLMs, PyTorch, TensorFlow, NLP",
-          "Languages: Python, TypeScript, JavaScript, Go, Java",
-        ],
+        return false;
       };
-      function fa(q) {
-        q = q.toLowerCase();
-        if (q.includes("contact") || q.includes("email"))
-          return `Reach David at ${pd.email} or ${pd.phone}.`;
-        if (q.includes("current") || q.includes("predicthq"))
-          return `${pd.currentRole.title} at ${pd.currentRole.company}.`;
-        if (q.includes("experience"))
-          return `10 years: Trbhi → Prezi → PredictHQ.`;
-        if (q.includes("project"))
-          return `3 projects: ${pd.projects.map((p) => p.name).join(", ")}.`;
-        if (q.includes("skill") || q.includes("stack"))
-          return `Stack: ${pd.skills.join("; ")}.`;
-        if (q.includes("hire") || q.includes("available"))
-          return `Open to Principal/Staff-level AI platform roles.`;
-        return `Ask me about David's experience, skills, or projects.`;
-      }
-      function am(t, ty) {
-        const m = document.createElement("div");
-        m.className = `ai-message ${ty}`;
-        m.textContent = t;
-        aiChatMessages.appendChild(m);
-        aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
-      }
-      function ati() {
-        const t = document.createElement("div");
-        t.className = "ai-typing-indicator";
-        t.id = "typingIndicator";
-        t.innerHTML = "<span></span><span></span><span></span>";
-        aiChatMessages.appendChild(t);
-        aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
-      }
-      function rti() {
-        const t = document.getElementById("typingIndicator");
-        if (t) t.remove();
-      }
-      function hs() {
-        const q = aiChatInput.value.trim();
-        if (!q) return;
-        am(q, "user");
-        aiChatInput.value = "";
-        ati();
-        setTimeout(
-          () => {
-            rti();
-            am(fa(q), "bot");
-          },
-          800 + Math.random() * 600,
-        );
-      }
+
+      formName.addEventListener("input", function() { showError(formName, false); });
+      formEmail.addEventListener("input", function() { showError(formEmail, false); });
+      formSubject.addEventListener("input", function() { showError(formSubject, false); });
+      formMessage.addEventListener("input", function() { showError(formMessage, false); });
+
+      
       aiChatBtn.addEventListener("click", () => {
         aiChatPanel.classList.toggle("open");
         if (aiChatPanel.classList.contains("open")) aiChatInput.focus();
